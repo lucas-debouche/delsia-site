@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Offres — Delsia</title>
+    <meta
+      name="description"
+      content="Choisissez Solo Free, Solo Pro ou Entreprise. Delsia pour agents immobiliers et commerciaux."
+    />
+    <link rel="icon" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav is-solid" id="nav">
+      <div class="wrap nav__inner">
+        <a class="brand" href="index.html" aria-label="Delsia">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <button class="nav__toggle" id="navToggle" type="button" aria-label="Menu">☰</button>
+        <nav class="nav__links" id="navLinks">
+          <a href="index.html">Accueil</a>
+          <a href="pricing.html">Offres</a>
+          <a class="btn btn--primary" href="mailto:contact@delsia.fr">Nous contacter</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="wrap">
+          <span class="section__eyebrow">Offres</span>
+          <h1>Simple. Transparent. Pensé terrain.</h1>
+          <p>
+            Pour agents immobiliers et commerciaux. Commence gratuitement. Passe en Pro quand le volume le justifie.
+            L’équipe Entreprise, on en parle avec toi.
+          </p>
+        </div>
+      </section>
+
+      <section class="wrap plans">
+        <article class="plan">
+          <div>
+            <h2 class="plan__name">Solo Free</h2>
+            <p class="plan__price">0 € <small>/ mois</small></p>
+            <p class="plan__desc">Pour découvrir Delsia sur tes premiers rendez-vous.</p>
+          </div>
+          <ul>
+            <li>Comptes rendus vocaux</li>
+            <li>Version propriétaire (agents)</li>
+            <li>Export PDF</li>
+            <li>Limite d’usage mensuelle</li>
+          </ul>
+          <a class="btn btn--outline-dark" href="#" id="cta-free">Commencer gratuitement</a>
+        </article>
+
+        <article class="plan plan--featured">
+          <div>
+            <h2 class="plan__name">Solo Pro</h2>
+            <p class="plan__price">À venir <small></small></p>
+            <p class="plan__desc">Pour ceux qui enchaînent les rendez-vous chaque semaine.</p>
+          </div>
+          <ul>
+            <li>Tout Solo Free</li>
+            <li>Volume de vocaux étendu</li>
+            <li>Priorité de traitement</li>
+            <li>Support prioritaire</li>
+          </ul>
+          <a class="btn btn--primary" href="#" id="cta-pro">Passer en Pro</a>
+        </article>
+
+        <article class="plan">
+          <div>
+            <h2 class="plan__name">Entreprise</h2>
+            <p class="plan__price">Sur devis</p>
+            <p class="plan__desc">Agences & équipes : accès partagés, process, accompagnement.</p>
+          </div>
+          <ul>
+            <li>Multi-utilisateurs</li>
+            <li>Pilotage d’équipe</li>
+            <li>Onboarding dédié</li>
+            <li>Conditions sur mesure</li>
+          </ul>
+          <a class="btn btn--navy" href="mailto:contact@delsia.fr?subject=Delsia%20Entreprise">Nous contacter</a>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <div>
+          <a href="index.html">Accueil</a>
+          ·
+          <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>
+        </div>
+        <span>© <span id="year"></span> Delsia</span>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

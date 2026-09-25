@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Delsia — Du vocal au compte rendu, pour agents et commerciaux</title>
+    <meta
+      name="description"
+      content="Delsia transforme vos notes vocales de visite ou de rendez-vous en comptes rendus clairs, prêts à partager."
+    />
+    <link rel="icon" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav" id="nav">
+      <div class="wrap nav__inner">
+        <a class="brand" href="index.html" aria-label="Delsia">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <button class="nav__toggle" id="navToggle" type="button" aria-label="Menu">☰</button>
+        <nav class="nav__links" id="navLinks">
+          <a href="pricing.html">Offres</a>
+          <a href="#fonctionnement">Comment ça marche</a>
+          <a class="btn btn--primary" href="pricing.html">Voir les offres</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero__grid" aria-hidden="true"></div>
+        <div class="wrap hero__inner">
+          <div>
+            <div class="hero__brand">
+              <img src="assets/logo-icon.png" alt="Logo Delsia" width="56" height="56" />
+              <div class="hero__brand-name">Dels<span>ia</span></div>
+            </div>
+            <h1>Tes rendez-vous en vocal. Tes comptes rendus, prêts.</h1>
+            <p class="hero__lead">
+              Tu dictes après une visite ou un client. Delsia rédige un compte rendu clair, pro, partageable — adapté
+              à ton métier.
+            </p>
+            <div class="hero__ctas">
+              <a class="btn btn--primary" href="pricing.html">Découvrir les offres</a>
+              <a class="btn btn--ghost" href="#fonctionnement">Voir le parcours</a>
+            </div>
+          </div>
+
+          <div class="hero__visual" aria-label="Aperçu d’un compte rendu Delsia">
+            <span class="badge-live"><i></i> Généré à l’instant</span>
+            <div class="device">
+              <div class="device__screen">
+                <div class="cr-tabs" role="tablist">
+                  <button type="button" class="is-active" data-tab="agent" role="tab" aria-selected="true">
+                    Pour toi
+                  </button>
+                  <button type="button" data-tab="owner" role="tab" aria-selected="false">
+                    Pour le propriétaire
+                  </button>
+                </div>
+                <div class="cr-panel is-active" data-panel="agent" role="tabpanel">
+                  <div class="cr-panel__meta">
+                    <span>12 rue des Lilas · T3</span>
+                    <span>Visite · 14:20</span>
+                  </div>
+                  <h3>Compte rendu</h3>
+                  <p>
+                    Bien lumineux, cuisine équipée, petite humidité salle de bain. Acquéreur motivé, offre possible
+                    sous 48 h.
+                  </p>
+                  <ul>
+                    <li>Relancer le notaire sur le diag amiante</li>
+                    <li>Envoyer photos façade + séjour</li>
+                    <li>Proposer 2e visite samedi matin</li>
+                  </ul>
+                </div>
+                <div class="cr-panel cr-panel--owner" data-panel="owner" role="tabpanel" hidden>
+                  <div class="cr-panel__meta">
+                    <span>Agents immobiliers</span>
+                    <span>Ton clair · prêt à envoyer</span>
+                  </div>
+                  <h3>Version propriétaire</h3>
+                  <p>
+                    La visite s’est bien déroulée. L’acquéreur a apprécié la luminosité et l’agencement. Un point
+                    d’attention sur la salle de bain sera précisé.
+                  </p>
+                  <ul>
+                    <li>Intérêt confirmé sur le bien</li>
+                    <li>Suite possible dans les prochains jours</li>
+                    <li>Nous restons en contact pour la suite</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--white" id="fonctionnement">
+        <div class="wrap">
+          <span class="section__eyebrow">Parcours</span>
+          <h2 class="section__title">Trois gestes. Zéro paperasse.</h2>
+          <p class="section__lead">
+            Conçu pour le terrain : tu parles, Delsia structure. Pas de formulaire interminable après le rendez-vous.
+          </p>
+          <div class="steps">
+            <article class="step">
+              <span class="step__num">01</span>
+              <h3>Tu enregistres</h3>
+              <p>Sur place, tu dictes ce qui compte : points clés, ressenti, prochaines actions.</p>
+            </article>
+            <article class="step">
+              <span class="step__num">02</span>
+              <h3>Delsia rédige</h3>
+              <p>Transcription + synthèse : un compte rendu structuré, prêt à relire ou à envoyer.</p>
+            </article>
+            <article class="step">
+              <span class="step__num">03</span>
+              <h3>Tu partages</h3>
+              <p>PDF ou message : archive au dossier, envoie si besoin, passe au rendez-vous suivant.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="metiers">
+        <div class="wrap">
+          <span class="section__eyebrow">Pour qui</span>
+          <h2 class="section__title">Un outil, deux métiers terrain.</h2>
+          <p class="section__lead">
+            Même logique pour tout le monde. Des options en plus quand tu es agent immobilier.
+          </p>
+          <div class="split">
+            <article class="panel panel--agent">
+              <span class="panel__tag">Agents immobiliers</span>
+              <h3>Visites, suivi, version propriétaire</h3>
+              <p>
+                Ton compte rendu de visite détaillé, plus une version soignée à envoyer au propriétaire — sans le
+                jargon interne.
+              </p>
+            </article>
+            <article class="panel panel--owner">
+              <span class="panel__tag">Commerciaux</span>
+              <h3>Rendez-vous clients, actions, suite</h3>
+              <p>
+                Un compte rendu clair après chaque échange : ce qui a été dit, ce qu’il faut relancer, la prochaine
+                étape. Pas de version propriétaire.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--navy">
+        <div class="wrap cta-band">
+          <div>
+            <h2>Prêt à sortir du carnet de notes ?</h2>
+            <p>Solo Free pour tester. Solo Pro quand tu enchaînes les rendez-vous.</p>
+          </div>
+          <a class="btn btn--primary" href="pricing.html">Comparer les offres</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <div>
+          <a href="pricing.html">Offres</a>
+          ·
+          <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>
+        </div>
+        <span>© <span id="year"></span> Delsia</span>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
