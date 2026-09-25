@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Offres — Delsia</title>
+    <title>Beta testeurs — Delsia</title>
     <meta
       name="description"
-      content="Choisissez Solo Free, Solo Pro ou Entreprise. Delsia pour agents immobiliers et commerciaux."
+      content="Delsia est en beta. Deviens testeur gratuitement — agents immobiliers et commerciaux."
     />
     <link rel="icon" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,8 +27,12 @@
         <button class="nav__toggle" id="navToggle" type="button" aria-label="Menu">☰</button>
         <nav class="nav__links" id="navLinks">
           <a href="index.html">Accueil</a>
-          <a href="pricing.html">Offres</a>
-          <a class="btn btn--primary" href="mailto:contact@delsia.fr">Nous contacter</a>
+          <a href="pricing.html">Beta</a>
+          <a
+            class="btn btn--primary"
+            href="mailto:contact@delsia.fr?subject=Je%20veux%20%C3%AAtre%20testeur%20Delsia"
+            >Devenir testeur</a
+          >
         </nav>
       </div>
     </header>
@@ -36,60 +40,59 @@
     <main>
       <section class="page-hero">
         <div class="wrap">
-          <span class="section__eyebrow">Offres</span>
-          <h1>Simple. Transparent. Pensé terrain.</h1>
+          <span class="section__eyebrow">Beta privée</span>
+          <h1>Pas encore sur les stores. Ouvert aux testeurs.</h1>
           <p>
-            Pour agents immobiliers et commerciaux. Commence gratuitement. Passe en Pro quand le volume le justifie.
-            L’équipe Entreprise, on en parle avec toi.
+            Delsia se construit avec des agents et des commerciaux sur le terrain. Tu testes gratuitement, tu nous
+            dis ce qui cloche — les offres payantes arriveront plus tard.
           </p>
         </div>
       </section>
 
-      <section class="wrap plans">
-        <article class="plan">
-          <div>
-            <h2 class="plan__name">Solo Free</h2>
-            <p class="plan__price">0 € <small>/ mois</small></p>
-            <p class="plan__desc">Pour découvrir Delsia sur tes premiers rendez-vous.</p>
-          </div>
-          <ul>
-            <li>Comptes rendus vocaux</li>
-            <li>Version propriétaire (agents)</li>
-            <li>Export PDF</li>
-            <li>Limite d’usage mensuelle</li>
-          </ul>
-          <a class="btn btn--outline-dark" href="#" id="cta-free">Commencer gratuitement</a>
-        </article>
-
+      <section class="wrap plans plans--single">
         <article class="plan plan--featured">
           <div>
-            <h2 class="plan__name">Solo Pro</h2>
-            <p class="plan__price">À venir <small></small></p>
-            <p class="plan__desc">Pour ceux qui enchaînent les rendez-vous chaque semaine.</p>
+            <h2 class="plan__name">Testeur gratuit</h2>
+            <p class="plan__price">0 €</p>
+            <p class="plan__desc">Accès beta sur invitation. iOS (TestFlight) ou Android (test fermé).</p>
           </div>
           <ul>
-            <li>Tout Solo Free</li>
-            <li>Volume de vocaux étendu</li>
-            <li>Priorité de traitement</li>
-            <li>Support prioritaire</li>
+            <li>Compte rendu après visite ou rendez-vous</li>
+            <li>Version propriétaire pour les agents</li>
+            <li>Export PDF</li>
+            <li>Tu donnes ton avis, on améliore</li>
           </ul>
-          <a class="btn btn--primary" href="#" id="cta-pro">Passer en Pro</a>
+          <a
+            class="btn btn--primary"
+            id="cta-tester"
+            href="mailto:contact@delsia.fr?subject=Je%20veux%20%C3%AAtre%20testeur%20Delsia&body=Bonjour%2C%0A%0AJe%20souhaite%20devenir%20testeur%20Delsia.%0A%0A-%20Pr%C3%A9nom%20%3A%0A-%20M%C3%A9tier%20(agent%20%2F%20commercial)%20%3A%0A-%20T%C3%A9l%C3%A9phone%20(iOS%20ou%20Android)%20%3A%0A%0AMerci."
+            >Je veux être testeur</a
+          >
         </article>
+      </section>
 
-        <article class="plan">
-          <div>
-            <h2 class="plan__name">Entreprise</h2>
-            <p class="plan__price">Sur devis</p>
-            <p class="plan__desc">Agences & équipes : accès partagés, process, accompagnement.</p>
+      <section class="section section--white beta-how">
+        <div class="wrap">
+          <span class="section__eyebrow">Comment ça se passe</span>
+          <h2 class="section__title">Trois étapes pour entrer.</h2>
+          <div class="steps">
+            <article class="step">
+              <span class="step__num">01</span>
+              <h3>Tu candidatures</h3>
+              <p>Envoie un message via le bouton. Indique ton métier et ton téléphone (iPhone ou Android).</p>
+            </article>
+            <article class="step">
+              <span class="step__num">02</span>
+              <h3>On t’invite</h3>
+              <p>Tu reçois un lien TestFlight (iOS) ou un accès au test Android — pas besoin de l’App Store.</p>
+            </article>
+            <article class="step">
+              <span class="step__num">03</span>
+              <h3>Tu testes</h3>
+              <p>Tu utilises Delsia sur le terrain et tu nous remontes ce qui marche (ou pas).</p>
+            </article>
           </div>
-          <ul>
-            <li>Multi-utilisateurs</li>
-            <li>Pilotage d’équipe</li>
-            <li>Onboarding dédié</li>
-            <li>Conditions sur mesure</li>
-          </ul>
-          <a class="btn btn--navy" href="mailto:contact@delsia.fr?subject=Delsia%20Entreprise">Nous contacter</a>
-        </article>
+        </div>
       </section>
     </main>
 

@@ -33,11 +33,4 @@
       });
     });
   });
-
-  // Store links — à brancher quand les URLs App Store / Play sont prêtes
-  const storeUrl = "#";
-  ["cta-free", "cta-pro"].forEach((id) => {
-    const el = document.getElementById(id);
-    if (el && storeUrl !== "#") el.setAttribute("href", storeUrl);
-  });
 })();

@@ -607,6 +607,19 @@ button {
   padding-bottom: 5rem;
 }
 
+.plans--single {
+  grid-template-columns: minmax(0, 420px);
+  justify-content: center;
+}
+
+.plans--single .plan--featured::before {
+  content: "Beta";
+}
+
+.beta-how {
+  padding-top: 0;
+}
+
 .plan {
   position: relative;
   padding: 1.75rem;
