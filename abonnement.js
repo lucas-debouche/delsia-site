@@ -1,10 +1,5 @@
 (() => {
-  const SUPABASE_URL = "https://gsyqfgwgrkonnnkethwd.supabase.co";
-  const SUPABASE_ANON_KEY =
-    window.DELSIA_SUPABASE_ANON_KEY ||
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdzeXFmZ3dncmtvbm5ua2V0aHdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxMzUwODgsImV4cCI6MjA4MzcxMTA4OH0.rPLUPiSZShSCw24jbFAsEhmGt4Gt7wknT2KeW5Vr8Xw";
-
-  const FUNCTIONS_BASE = `${SUPABASE_URL}/functions/v1`;
+  const FUNCTIONS_BASE = `${window.DELSIA_SUPABASE_URL}/functions/v1`;
 
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
@@ -21,12 +16,13 @@
     flash.textContent = "Paiement annulé. Tu peux réessayer quand tu veux.";
   }
 
-  if (!window.supabase) {
-    console.warn("supabase-js manquant");
+  let client;
+  try {
+    client = window.delsiaCreateSupabase();
+  } catch (err) {
+    console.warn(err);
     return;
   }
-
-  const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   const authBox = document.getElementById("authBox");
   const payBox = document.getElementById("payBox");
@@ -46,7 +42,7 @@
       method: "POST",
       headers: {
         Authorization: `Bearer ${session.access_token}`,
-        apikey: SUPABASE_ANON_KEY,
+        apikey: window.DELSIA_SUPABASE_ANON_KEY,
         "Content-Type": "application/json",
       },
       body: "{}",
@@ -69,6 +65,7 @@
       return;
     }
 
+    window.delsiaCleanAuthHash();
     authBox.hidden = true;
     payBox.hidden = false;
     userLabel.textContent = `Connecté : ${session.user.email}`;
@@ -105,17 +102,26 @@
       return;
     }
     magicBtn.disabled = true;
+    const redirectTo = `${window.location.origin}/abonnement.html`;
     const { error } = await client.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${window.location.origin}/abonnement.html`,
+        emailRedirectTo: redirectTo,
+        shouldCreateUser: false,
       },
     });
     magicBtn.disabled = false;
     magicMsg.hidden = false;
-    magicMsg.textContent = error
-      ? error.message
-      : "Lien envoyé. Ouvre-le depuis ta boîte mail pour te connecter.";
+    if (error) {
+      magicMsg.textContent =
+        error.message.includes("Signups not allowed") ||
+        error.message.includes("User not found")
+          ? "Aucun compte avec cet e-mail. Crée d’abord ton compte dans l’app Delsia."
+          : error.message;
+      return;
+    }
+    magicMsg.textContent =
+      "Lien envoyé. Sur mobile : ouvre le mail, appuie longuement sur le lien → « Ouvrir dans Safari/Chrome » (pas dans l’app Delsia).";
   });
 
   checkoutBtn?.addEventListener("click", async () => {
@@ -137,7 +143,7 @@
         method: "POST",
         headers: {
           Authorization: `Bearer ${session.access_token}`,
-          apikey: SUPABASE_ANON_KEY,
+          apikey: window.DELSIA_SUPABASE_ANON_KEY,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email: session.user.email }),
@@ -176,9 +182,12 @@
     }
   });
 
-  client.auth.onAuthStateChange(() => {
+  client.auth.onAuthStateChange((event) => {
+    if (event === "SIGNED_IN") {
+      window.delsiaCleanAuthHash();
+    }
     refreshUi();
   });
 
-  refreshUi();
+  client.auth.getSession().then(() => refreshUi());
 })();
