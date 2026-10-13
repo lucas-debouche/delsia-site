@@ -1,6 +1,5 @@
 (() => {
   const SUPABASE_URL = "https://gsyqfgwgrkonnnkethwd.supabase.co";
-  // Clé anon / publishable uniquement — jamais la service_role
   const SUPABASE_ANON_KEY =
     window.DELSIA_SUPABASE_ANON_KEY ||
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdzeXFmZ3dncmtvbm5ua2V0aHdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxMzUwODgsImV4cCI6MjA4MzcxMTA4OH0.rPLUPiSZShSCw24jbFAsEhmGt4Gt7wknT2KeW5Vr8Xw";
@@ -15,17 +14,15 @@
   if (params.get("success") === "1" && flash) {
     flash.hidden = false;
     flash.textContent =
-      "Paiement reçu. Rouvre l’app Delsia : ton plan Agent sera actif sous une minute.";
+      "Paiement reçu. Rouvre l’app Delsia : ton plan Agent sera actif sous une minute. Tu peux aussi ouvrir Mon compte.";
   }
   if (params.get("canceled") === "1" && flash) {
     flash.hidden = false;
     flash.textContent = "Paiement annulé. Tu peux réessayer quand tu veux.";
   }
 
-  if (!window.supabase || SUPABASE_ANON_KEY.startsWith("REPLACE_")) {
-    console.warn(
-      "Configure window.DELSIA_SUPABASE_ANON_KEY ou remplace REPLACE_WITH_SUPABASE_ANON_KEY dans abonnement.js",
-    );
+  if (!window.supabase) {
+    console.warn("supabase-js manquant");
     return;
   }
 
@@ -37,21 +34,66 @@
   const magicBtn = document.getElementById("magicBtn");
   const magicMsg = document.getElementById("magicMsg");
   const checkoutBtn = document.getElementById("checkoutBtn");
+  const portalBtn = document.getElementById("portalBtn");
   const payMsg = document.getElementById("payMsg");
   const userLabel = document.getElementById("userLabel");
+  const planHint = document.getElementById("planHint");
+  const checkoutActions = document.getElementById("checkoutActions");
+  const manageActions = document.getElementById("manageActions");
+
+  async function openPortal(session) {
+    const res = await fetch(`${FUNCTIONS_BASE}/create-portal`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${session.access_token}`,
+        apikey: SUPABASE_ANON_KEY,
+        "Content-Type": "application/json",
+      },
+      body: "{}",
+    });
+    const data = await res.json();
+    if (!res.ok || !data.url) {
+      throw new Error(data.error || "Impossible d’ouvrir le portail");
+    }
+    window.location.href = data.url;
+  }
 
   async function refreshUi() {
     const {
       data: { session },
     } = await client.auth.getSession();
 
-    if (session?.user) {
-      authBox.hidden = true;
-      payBox.hidden = false;
-      userLabel.textContent = `Connecté : ${session.user.email}`;
-    } else {
+    if (!session?.user) {
       authBox.hidden = false;
       payBox.hidden = true;
+      return;
+    }
+
+    authBox.hidden = true;
+    payBox.hidden = false;
+    userLabel.textContent = `Connecté : ${session.user.email}`;
+
+    const { data: profile } = await client
+      .from("users")
+      .select("plan, subscription_status, stripe_customer_id")
+      .eq("id", session.user.id)
+      .maybeSingle();
+
+    const hasStripeCustomer = !!profile?.stripe_customer_id;
+    const isAgentActive =
+      profile?.plan === "agent" &&
+      ["active", "trialing", "past_due"].includes(profile?.subscription_status);
+
+    if (hasStripeCustomer && (isAgentActive || profile?.plan === "agent")) {
+      planHint.hidden = false;
+      planHint.textContent =
+        "Tu as déjà un abonnement lié. Gère-le ici ou depuis Mon compte.";
+      checkoutActions.hidden = true;
+      manageActions.hidden = false;
+    } else {
+      planHint.hidden = true;
+      checkoutActions.hidden = false;
+      manageActions.hidden = true;
     }
   }
 
@@ -109,6 +151,28 @@
       payMsg.hidden = false;
       payMsg.textContent = err.message || "Erreur Stripe";
       checkoutBtn.disabled = false;
+    }
+  });
+
+  portalBtn?.addEventListener("click", async () => {
+    payMsg.hidden = true;
+    portalBtn.disabled = true;
+    const {
+      data: { session },
+    } = await client.auth.getSession();
+    if (!session) {
+      payMsg.hidden = false;
+      payMsg.textContent = "Session expirée. Reconnecte-toi.";
+      portalBtn.disabled = false;
+      await refreshUi();
+      return;
+    }
+    try {
+      await openPortal(session);
+    } catch (err) {
+      payMsg.hidden = false;
+      payMsg.textContent = err.message || "Erreur Stripe";
+      portalBtn.disabled = false;
     }
   });
 

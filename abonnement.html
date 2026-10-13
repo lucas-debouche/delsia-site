@@ -25,9 +25,12 @@
           <img class="brand__mark" src="assets/logo-icon.png" alt="" />
           <span class="brand__word">Dels<span>ia</span></span>
         </a>
+        <button class="nav__toggle" id="navToggle" type="button" aria-label="Menu">☰</button>
         <nav class="nav__links" id="navLinks">
           <a href="index.html">Accueil</a>
           <a href="pricing.html">Beta</a>
+          <a href="abonnement.html">Abonnement</a>
+          <a href="compte.html">Mon compte</a>
           <a class="btn btn--primary" href="#payer">S’abonner</a>
         </nav>
       </div>
@@ -39,8 +42,9 @@
           <span class="section__eyebrow">Abonnement</span>
           <h1>Plan Agent — 12 € / mois</h1>
           <p>
-            60 comptes rendus par mois, vocal jusqu’à 6 minutes, version propriétaire et PDF.
-            Le paiement se fait ici, sur delsia.fr — pas dans l’App Store.
+            60 comptes rendus par mois, vocal jusqu’à 6 minutes, version propriétaire et PDF. Le paiement se fait
+            ici, sur delsia.fr — pas dans l’App Store. Pour gérer carte ou résiliation :
+            <a href="compte.html">Mon compte</a>.
           </p>
         </div>
       </section>
@@ -50,7 +54,7 @@
           <div>
             <h2 class="plan__name">Agent</h2>
             <p class="plan__price">12 €</p>
-            <p class="plan__desc">Par mois · résiliable depuis Stripe</p>
+            <p class="plan__desc">Par mois · résiliable depuis Mon compte</p>
           </div>
           <ul>
             <li>60 comptes rendus / mois</li>
@@ -91,10 +95,18 @@
 
           <div id="payBox" hidden>
             <p class="plan__desc" id="userLabel"></p>
-            <div class="plan__ctas">
+            <p class="plan__desc" id="planHint" hidden></p>
+            <div class="plan__ctas" id="checkoutActions">
               <button class="btn btn--primary" type="button" id="checkoutBtn">
                 Payer avec Stripe
               </button>
+              <a class="btn btn--ghost-on-navy" href="compte.html">Mon compte</a>
+            </div>
+            <div class="plan__ctas" id="manageActions" hidden>
+              <button class="btn btn--primary" type="button" id="portalBtn">
+                Gérer mon abonnement
+              </button>
+              <a class="btn btn--ghost-on-navy" href="compte.html">Voir mon compte</a>
             </div>
             <p class="plan__note" id="payMsg" hidden></p>
           </div>
@@ -112,6 +124,8 @@
         </a>
         <div>
           <a href="index.html">Accueil</a>
+          ·
+          <a href="compte.html">Mon compte</a>
           ·
           <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>
         </div>

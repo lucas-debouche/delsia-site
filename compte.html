@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mon compte — Delsia</title>
+    <meta
+      name="description"
+      content="Gère ton abonnement Delsia : plan, carte bancaire, résiliation."
+    />
+    <link rel="icon" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <body>
+    <header class="nav is-solid" id="nav">
+      <div class="wrap nav__inner">
+        <a class="brand" href="index.html" aria-label="Delsia">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <button class="nav__toggle" id="navToggle" type="button" aria-label="Menu">☰</button>
+        <nav class="nav__links" id="navLinks">
+          <a href="index.html">Accueil</a>
+          <a href="pricing.html">Beta</a>
+          <a href="abonnement.html">Abonnement</a>
+          <a class="btn btn--primary" href="compte.html">Mon compte</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="wrap">
+          <span class="section__eyebrow">Compte</span>
+          <h1>Ton abonnement Delsia</h1>
+          <p>
+            Connecte-toi avec le même e-mail que dans l’app pour voir ton plan, changer de carte ou
+            résilier.
+          </p>
+        </div>
+      </section>
+
+      <section class="wrap plans plans--single" id="compte">
+        <article class="plan plan--featured">
+          <div id="authBox">
+            <h2 class="plan__name">Connexion</h2>
+            <p class="plan__desc">
+              On t’envoie un lien magique — pas de mot de passe à retenir.
+            </p>
+            <label class="plan__desc" for="emailInput" style="display: block; margin-bottom: 8px"
+              >E-mail</label
+            >
+            <input
+              id="emailInput"
+              type="email"
+              autocomplete="email"
+              placeholder="toi@agence.fr"
+              style="
+                width: 100%;
+                max-width: 360px;
+                padding: 12px 14px;
+                border-radius: 10px;
+                border: 1px solid #d0d5dd;
+                margin-bottom: 12px;
+                font: inherit;
+              "
+            />
+            <div class="plan__ctas">
+              <button class="btn btn--primary" type="button" id="magicBtn">
+                Recevoir le lien de connexion
+              </button>
+            </div>
+            <p class="plan__note" id="magicMsg" hidden></p>
+          </div>
+
+          <div id="accountBox" hidden>
+            <h2 class="plan__name">Mon plan</h2>
+            <p class="plan__price" id="planLabel">—</p>
+            <p class="plan__desc" id="userLabel"></p>
+            <p class="plan__desc" id="statusLabel"></p>
+            <p class="plan__desc" id="periodLabel" hidden></p>
+
+            <div class="plan__ctas" id="actionsAgent" hidden>
+              <button class="btn btn--primary" type="button" id="portalBtn">
+                Gérer mon abonnement
+              </button>
+              <button class="btn btn--ghost-on-navy" type="button" id="logoutBtn">
+                Se déconnecter
+              </button>
+            </div>
+
+            <div class="plan__ctas" id="actionsFree" hidden>
+              <a class="btn btn--primary" href="abonnement.html">S’abonner — 12 € / mois</a>
+              <button class="btn btn--ghost-on-navy" type="button" id="logoutBtn2">
+                Se déconnecter
+              </button>
+            </div>
+
+            <p class="plan__note" id="accountMsg" hidden></p>
+            <p class="plan__note">
+              « Gérer mon abonnement » ouvre le portail Stripe : carte, factures, résiliation.
+            </p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <div>
+          <a href="abonnement.html">Abonnement</a>
+          ·
+          <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>
+        </div>
+        <span>© <span id="year"></span> Delsia</span>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="compte.js"></script>
+  </body>
+</html>
