@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Abonnement Agent — Delsia</title>
+    <meta
+      name="description"
+      content="Abonnement Delsia Agent : comptes rendus vocaux pour agents immobiliers et commerciaux."
+    />
+    <link rel="icon" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <body>
+    <header class="nav is-solid" id="nav">
+      <div class="wrap nav__inner">
+        <a class="brand" href="index.html" aria-label="Delsia">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <nav class="nav__links" id="navLinks">
+          <a href="index.html">Accueil</a>
+          <a href="pricing.html">Beta</a>
+          <a class="btn btn--primary" href="#payer">S’abonner</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="wrap">
+          <span class="section__eyebrow">Abonnement</span>
+          <h1>Plan Agent — 12 € / mois</h1>
+          <p>
+            60 comptes rendus par mois, vocal jusqu’à 6 minutes, version propriétaire et PDF.
+            Le paiement se fait ici, sur delsia.fr — pas dans l’App Store.
+          </p>
+        </div>
+      </section>
+
+      <section class="wrap plans plans--single" id="payer">
+        <article class="plan plan--featured">
+          <div>
+            <h2 class="plan__name">Agent</h2>
+            <p class="plan__price">12 €</p>
+            <p class="plan__desc">Par mois · résiliable depuis Stripe</p>
+          </div>
+          <ul>
+            <li>60 comptes rendus / mois</li>
+            <li>Vocal max 6 minutes</li>
+            <li>Compte rendu agent + version propriétaire</li>
+            <li>Export PDF</li>
+          </ul>
+
+          <div id="authBox">
+            <p class="plan__desc" id="authHint">
+              Connecte-toi avec le même e-mail que dans l’app pour lier l’abonnement.
+            </p>
+            <label class="plan__desc" for="emailInput" style="display: block; margin-bottom: 8px"
+              >E-mail</label
+            >
+            <input
+              id="emailInput"
+              type="email"
+              autocomplete="email"
+              placeholder="toi@agence.fr"
+              style="
+                width: 100%;
+                max-width: 360px;
+                padding: 12px 14px;
+                border-radius: 10px;
+                border: 1px solid #d0d5dd;
+                margin-bottom: 12px;
+                font: inherit;
+              "
+            />
+            <div class="plan__ctas">
+              <button class="btn btn--primary" type="button" id="magicBtn">
+                Recevoir le lien de connexion
+              </button>
+            </div>
+            <p class="plan__note" id="magicMsg" hidden></p>
+          </div>
+
+          <div id="payBox" hidden>
+            <p class="plan__desc" id="userLabel"></p>
+            <div class="plan__ctas">
+              <button class="btn btn--primary" type="button" id="checkoutBtn">
+                Payer avec Stripe
+              </button>
+            </div>
+            <p class="plan__note" id="payMsg" hidden></p>
+          </div>
+
+          <p class="plan__note" id="flash" hidden></p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <div>
+          <a href="index.html">Accueil</a>
+          ·
+          <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>
+        </div>
+        <span>© <span id="year"></span> Delsia</span>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="abonnement.js"></script>
+  </body>
+</html>
