@@ -820,6 +820,196 @@ button {
   }
 }
 
+/* ——— Soft link (CTA secondaire) ——— */
+.link-soft {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0.5rem 0.25rem;
+}
+
+.link-soft:hover {
+  color: var(--white);
+}
+
+.hero .link-soft {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero__proof {
+  margin: 1.25rem 0 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ——— Auth panels ——— */
+.auth-panel {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line-dark);
+}
+
+.auth-panel__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+}
+
+.auth-modes {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.auth-modes button {
+  flex: 1;
+  max-width: 180px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line-dark);
+  background: var(--white);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.auth-modes button.is-active {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: var(--white);
+}
+
+.auth-label {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.auth-input {
+  width: 100%;
+  max-width: 360px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d0d5dd;
+  margin-bottom: 12px;
+  font: inherit;
+  display: block;
+  background: var(--white);
+  color: var(--ink);
+}
+
+.auth-input:focus {
+  outline: 2px solid rgba(16, 159, 185, 0.45);
+  border-color: var(--teal);
+}
+
+.auth-msg {
+  color: var(--muted);
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.trust-line {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ——— FAQ ——— */
+.faq {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  max-width: 720px;
+}
+
+.faq__item {
+  border: 1px solid var(--line-dark);
+  border-radius: 14px;
+  background: var(--white);
+  padding: 0.85rem 1.1rem;
+}
+
+.faq__item summary {
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__item p {
+  margin: 0.75rem 0 0.25rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.faq__item a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ——— Legal pages ——— */
+.legal {
+  max-width: 680px;
+}
+
+.legal h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin: 2rem 0 0.65rem;
+}
+
+.legal h2:first-child {
+  margin-top: 0;
+}
+
+.legal p,
+.legal li {
+  color: var(--muted);
+}
+
+.legal ul {
+  padding-left: 1.2rem;
+}
+
+.legal a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: var(--ink);
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.85rem;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.footer__links a:hover {
+  text-decoration: underline;
+}
+
 /* ——— Responsive ——— */
 @media (max-width: 900px) {
   .hero__inner,

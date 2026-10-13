@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mentions légales — Delsia</title>
+    <meta name="description" content="Mentions légales du site delsia.fr" />
+    <link rel="icon" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav is-solid" id="nav">
+      <div class="wrap nav__inner">
+        <a class="brand" href="index.html" aria-label="Delsia">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <button class="nav__toggle" id="navToggle" type="button" aria-label="Menu">☰</button>
+        <nav class="nav__links" id="navLinks">
+          <a href="index.html">Accueil</a>
+          <a href="pricing.html">Télécharger</a>
+          <a href="abonnement.html">Abonnement</a>
+          <a href="compte.html">Mon compte</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="wrap">
+          <span class="section__eyebrow">Légal</span>
+          <h1>Mentions légales</h1>
+        </div>
+      </section>
+      <section class="section section--white">
+        <div class="wrap legal">
+          <h2>Éditeur</h2>
+          <p>
+            Le site <strong>delsia.fr</strong> est édité par :<br />
+            <strong>[Raison sociale / Nom]</strong><br />
+            [Adresse complète]<br />
+            SIRET : [SIRET]<br />
+            E-mail : <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>
+          </p>
+          <h2>Directeur de la publication</h2>
+          <p>[Nom du responsable de publication]</p>
+          <h2>Hébergement du site</h2>
+          <p>
+            Site web hébergé par Vercel Inc.<br />
+            440 N Barranca Ave #4133, Covina, CA 91723, États-Unis<br />
+            <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">vercel.com</a>
+          </p>
+          <h2>Application et données</h2>
+          <p>
+            L’application Delsia et les données associées sont hébergées via Supabase (infrastructure cloud,
+            région UE lorsque configurée — voir
+            <a href="confidentialite.html">politique de confidentialité</a>).
+          </p>
+          <h2>Propriété intellectuelle</h2>
+          <p>
+            L’ensemble des contenus (textes, marques, logos, interfaces) est protégé. Toute reproduction non
+            autorisée est interdite.
+          </p>
+          <p class="plan__note">Complète les champs entre crochets avec tes informations légales.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <div class="footer__links">
+          <a href="pricing.html">Télécharger</a>
+          <a href="abonnement.html">Abonnement</a>
+          <a href="mentions.html">Mentions</a>
+          <a href="confidentialite.html">Confidentialité</a>
+          <a href="cgv.html">CGV</a>
+          <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>
+        </div>
+        <span>© <span id="year"></span> Delsia</span>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

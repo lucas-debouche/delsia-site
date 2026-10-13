@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Confidentialité — Delsia</title>
+    <meta name="description" content="Politique de confidentialité Delsia — vocaux, comptes rendus, RGPD." />
+    <link rel="icon" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav is-solid" id="nav">
+      <div class="wrap nav__inner">
+        <a class="brand" href="index.html" aria-label="Delsia">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <button class="nav__toggle" id="navToggle" type="button" aria-label="Menu">☰</button>
+        <nav class="nav__links" id="navLinks">
+          <a href="index.html">Accueil</a>
+          <a href="pricing.html">Télécharger</a>
+          <a href="abonnement.html">Abonnement</a>
+          <a href="compte.html">Mon compte</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="wrap">
+          <span class="section__eyebrow">Légal</span>
+          <h1>Confidentialité</h1>
+          <p>Comment Delsia traite tes données — vocaux, comptes rendus, compte.</p>
+        </div>
+      </section>
+      <section class="section section--white">
+        <div class="wrap legal">
+          <h2>Responsable de traitement</h2>
+          <p>
+            [Raison sociale / Nom] — <a href="mailto:contact@delsia.fr">contact@delsia.fr</a><br />
+            Voir aussi les <a href="mentions.html">mentions légales</a>.
+          </p>
+          <h2>Données collectées</h2>
+          <ul>
+            <li>Compte : e-mail, nom, préférences métier (agent / commercial)</li>
+            <li>Contenus : notes vocales, transcriptions, comptes rendus, photos liées aux dossiers</li>
+            <li>Paiement : géré par Stripe (nous ne stockons pas le numéro de carte)</li>
+            <li>Technique : logs nécessaires au fonctionnement et à la sécurité</li>
+          </ul>
+          <h2>Micro et enregistrement</h2>
+          <p>
+            Le micro n’est utilisé que lorsque tu lances un enregistrement dans l’app. Aucune écoute en
+            arrière-plan.
+          </p>
+          <h2>Finalités</h2>
+          <p>
+            Fournir le service (transcription, rédaction de comptes rendus), gérer l’abonnement, améliorer le
+            produit, répondre au support.
+          </p>
+          <h2>Hébergement</h2>
+          <p>
+            Données applicatives via Supabase (région UE lorsque le projet est configuré en UE). Site via
+            Vercel. Paiements via Stripe.
+          </p>
+          <h2>Durée de conservation</h2>
+          <p>
+            Tant que ton compte est actif, puis suppression ou anonymisation dans un délai raisonnable après
+            clôture, sauf obligation légale.
+          </p>
+          <h2>Tes droits (RGPD)</h2>
+          <p>
+            Accès, rectification, suppression, opposition, portabilité — contacte
+            <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>. Tu peux aussi introduire une réclamation
+            auprès de la CNIL.
+          </p>
+          <p class="plan__note">Document type — à faire relire / compléter avec ton conseil si besoin.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <div class="footer__links">
+          <a href="pricing.html">Télécharger</a>
+          <a href="abonnement.html">Abonnement</a>
+          <a href="mentions.html">Mentions</a>
+          <a href="confidentialite.html">Confidentialité</a>
+          <a href="cgv.html">CGV</a>
+          <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>
+        </div>
+        <span>© <span id="year"></span> Delsia</span>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

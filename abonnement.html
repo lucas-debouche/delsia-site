@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Abonnement Agent — Delsia</title>
+    <title>Abonnement Agent 12 € — Delsia</title>
     <meta
       name="description"
-      content="Abonnement Delsia Agent : comptes rendus vocaux pour agents immobiliers et commerciaux."
+      content="Plan Agent Delsia : 12 € TTC / mois, 60 comptes rendus, vocal 6 min. Paiement Stripe sur delsia.fr."
     />
     <link rel="icon" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,28 +17,6 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <style>
-      .auth-modes {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 16px;
-      }
-      .auth-modes button {
-        flex: 1;
-        max-width: 180px;
-        padding: 10px 12px;
-        border-radius: 10px;
-        border: 1px solid #d0d5dd;
-        background: #fff;
-        font: inherit;
-        cursor: pointer;
-      }
-      .auth-modes button.is-active {
-        border-color: #050a30;
-        background: #050a30;
-        color: #fff;
-      }
-    </style>
   </head>
   <body>
     <header class="nav is-solid" id="nav">
@@ -50,7 +28,7 @@
         <button class="nav__toggle" id="navToggle" type="button" aria-label="Menu">☰</button>
         <nav class="nav__links" id="navLinks">
           <a href="index.html">Accueil</a>
-          <a href="pricing.html">Beta</a>
+          <a href="pricing.html">Télécharger</a>
           <a href="abonnement.html">Abonnement</a>
           <a href="compte.html">Mon compte</a>
           <a class="btn btn--primary" href="#payer">S’abonner</a>
@@ -62,11 +40,11 @@
       <section class="page-hero">
         <div class="wrap">
           <span class="section__eyebrow">Abonnement</span>
-          <h1>Plan Agent — 12 € / mois</h1>
+          <h1>Plan Agent — 12&nbsp;€&nbsp;TTC / mois</h1>
           <p>
-            60 comptes rendus par mois, vocal jusqu’à 6 minutes, version propriétaire et PDF. Le paiement se fait
-            ici, sur delsia.fr — pas dans l’App Store. Pour gérer carte ou résiliation :
-            <a href="compte.html">Mon compte</a>.
+            60 comptes rendus par mois, vocal jusqu’à 6 minutes, version propriétaire et PDF. Paiement sécurisé
+            Stripe sur delsia.fr — pas dans l’App Store. Pour tester sans payer :
+            <a href="pricing.html">télécharge d’abord la beta</a>.
           </p>
         </div>
       </section>
@@ -75,102 +53,60 @@
         <article class="plan plan--featured">
           <div>
             <h2 class="plan__name">Agent</h2>
-            <p class="plan__price">12 €</p>
-            <p class="plan__desc">Par mois · résiliable depuis Mon compte</p>
+            <p class="plan__price">12&nbsp;€</p>
+            <p class="plan__desc">TTC / mois · sans engagement · résiliable depuis Mon compte</p>
           </div>
           <ul>
             <li>60 comptes rendus / mois</li>
-            <li>Vocal max 6 minutes</li>
+            <li>Vocal max 6 minutes par enregistrement</li>
             <li>Compte rendu agent + version propriétaire</li>
             <li>Export PDF</li>
           </ul>
 
-          <div id="authBox">
+          <p class="trust-line">
+            Paiement sécurisé Stripe · Données hébergées UE (Supabase) · Résiliable en quelques clics
+          </p>
+
+          <div id="authBox" class="auth-panel">
             <div class="auth-modes" role="tablist">
               <button type="button" id="modeLogin" class="is-active">Connexion</button>
               <button type="button" id="modeSignup">Créer un compte</button>
             </div>
-            <h3 class="plan__name" id="authTitle" style="font-size: 1.25rem">Connexion</h3>
+            <h3 class="auth-panel__title" id="authTitle">Connexion</h3>
             <p class="plan__desc" id="authHint">
-              Même e-mail et mot de passe que dans l’app Delsia.
+              Même e-mail et mot de passe que dans l’app. Pas encore d’app ?
+              <a href="pricing.html">Télécharge la beta</a> — ou crée ton compte ici pour t’abonner, tu le
+              réutiliseras dans l’app.
             </p>
-            <label class="plan__desc" for="emailInput" style="display: block; margin-bottom: 6px"
-              >E-mail</label
-            >
-            <input
-              id="emailInput"
-              type="email"
-              autocomplete="email"
-              placeholder="toi@agence.fr"
-              style="
-                width: 100%;
-                max-width: 360px;
-                padding: 12px 14px;
-                border-radius: 10px;
-                border: 1px solid #d0d5dd;
-                margin-bottom: 12px;
-                font: inherit;
-                display: block;
-              "
-            />
-            <label class="plan__desc" for="passwordInput" style="display: block; margin-bottom: 6px"
-              >Mot de passe</label
-            >
+            <label class="auth-label" for="emailInput">E-mail</label>
+            <input id="emailInput" class="auth-input" type="email" autocomplete="email" placeholder="toi@agence.fr" />
+            <label class="auth-label" for="passwordInput">Mot de passe</label>
             <input
               id="passwordInput"
+              class="auth-input"
               type="password"
               autocomplete="current-password"
               placeholder="••••••••"
-              style="
-                width: 100%;
-                max-width: 360px;
-                padding: 12px 14px;
-                border-radius: 10px;
-                border: 1px solid #d0d5dd;
-                margin-bottom: 12px;
-                font: inherit;
-                display: block;
-              "
             />
             <div class="plan__ctas">
               <button class="btn btn--primary" type="button" id="loginBtn">Se connecter</button>
-              <button class="btn btn--primary" type="button" id="signupBtn" hidden>
-                Créer mon compte
-              </button>
+              <button class="btn btn--primary" type="button" id="signupBtn" hidden>Créer mon compte</button>
             </div>
             <p class="plan__note">
-              <button
-                type="button"
-                id="forgotBtn"
-                style="
-                  background: none;
-                  border: none;
-                  padding: 0;
-                  color: inherit;
-                  text-decoration: underline;
-                  cursor: pointer;
-                  font: inherit;
-                "
-              >
-                Mot de passe oublié ?
-              </button>
+              <button type="button" id="forgotBtn" class="link-button">Mot de passe oublié ?</button>
             </p>
-            <p class="plan__note" id="authMsg" hidden></p>
+            <p class="plan__note auth-msg" id="authMsg" hidden></p>
           </div>
 
           <div id="payBox" hidden>
             <p class="plan__desc" id="userLabel"></p>
             <p class="plan__desc" id="planHint" hidden></p>
             <div class="plan__ctas" id="checkoutActions">
-              <button class="btn btn--primary" type="button" id="checkoutBtn">
-                Payer avec Stripe
-              </button>
+              <button class="btn btn--primary" type="button" id="checkoutBtn">Payer avec Stripe</button>
               <a class="btn btn--ghost-on-navy" href="compte.html">Mon compte</a>
             </div>
             <div class="plan__ctas" id="manageActions" hidden>
-              <button class="btn btn--primary" type="button" id="portalBtn">
-                Gérer mon abonnement
-              </button>
+              <button class="btn btn--primary" type="button" id="portalBtn">Gérer mon abonnement</button>
               <a class="btn btn--ghost-on-navy" href="compte.html">Voir mon compte</a>
             </div>
             <p class="plan__note" id="payMsg" hidden></p>
@@ -178,6 +114,50 @@
 
           <p class="plan__note" id="flash" hidden></p>
         </article>
+      </section>
+
+      <section class="section section--white" id="faq">
+        <div class="wrap">
+          <span class="section__eyebrow">FAQ</span>
+          <h2 class="section__title">Questions fréquentes</h2>
+          <div class="faq">
+            <details class="faq__item">
+              <summary>Le prix est-il TTC ?</summary>
+              <p>Oui : 12&nbsp;€&nbsp;TTC par mois. Facturation via Stripe.</p>
+            </details>
+            <details class="faq__item">
+              <summary>Puis-je résilier quand je veux ?</summary>
+              <p>
+                Oui, sans engagement. Depuis
+                <a href="compte.html">Mon compte</a> → Gérer mon abonnement (portail Stripe) : carte, factures,
+                résiliation.
+              </p>
+            </details>
+            <details class="faq__item">
+              <summary>C’est le même compte que l’app ?</summary>
+              <p>
+                Oui : même e-mail et mot de passe. Tu peux créer le compte ici pour t’abonner, puis te connecter
+                dans l’app — ou l’inverse.
+              </p>
+            </details>
+            <details class="faq__item">
+              <summary>Beta gratuite ou abonnement ?</summary>
+              <p>
+                La beta te permet de tester l’app gratuitement
+                (<a href="pricing.html">en téléchargeant</a>. L’abonnement Agent active le quota de 60 comptes
+                rendus / mois et le suivi de facturation.
+              </p>
+            </details>
+            <details class="faq__item">
+              <summary>Quelles sont les limites ?</summary>
+              <p>60 comptes rendus par mois · vocal max 6 minutes par enregistrement · export PDF inclus.</p>
+            </details>
+            <details class="faq__item">
+              <summary>Besoin d’aide ?</summary>
+              <p><a href="mailto:contact@delsia.fr">contact@delsia.fr</a></p>
+            </details>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -187,11 +167,13 @@
           <img class="brand__mark" src="assets/logo-icon.png" alt="" />
           <span class="brand__word">Dels<span>ia</span></span>
         </a>
-        <div>
-          <a href="index.html">Accueil</a>
-          ·
+        <div class="footer__links">
+          <a href="pricing.html">Télécharger</a>
+          <a href="abonnement.html">Abonnement</a>
           <a href="compte.html">Mon compte</a>
-          ·
+          <a href="mentions.html">Mentions</a>
+          <a href="confidentialite.html">Confidentialité</a>
+          <a href="cgv.html">CGV</a>
           <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>
         </div>
         <span>© <span id="year"></span> Delsia</span>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CGV — Delsia</title>
+    <meta name="description" content="Conditions générales de vente — abonnement Delsia Agent." />
+    <link rel="icon" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav is-solid" id="nav">
+      <div class="wrap nav__inner">
+        <a class="brand" href="index.html" aria-label="Delsia">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <button class="nav__toggle" id="navToggle" type="button" aria-label="Menu">☰</button>
+        <nav class="nav__links" id="navLinks">
+          <a href="index.html">Accueil</a>
+          <a href="pricing.html">Télécharger</a>
+          <a href="abonnement.html">Abonnement</a>
+          <a href="compte.html">Mon compte</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="wrap">
+          <span class="section__eyebrow">Légal</span>
+          <h1>Conditions générales de vente</h1>
+          <p>Abonnement Agent — applicables aux paiements sur delsia.fr.</p>
+        </div>
+      </section>
+      <section class="section section--white">
+        <div class="wrap legal">
+          <h2>1. Objet</h2>
+          <p>
+            Les présentes CGV régissent l’abonnement au service Delsia « Plan Agent » souscrit via
+            <a href="abonnement.html">delsia.fr/abonnement</a>.
+          </p>
+          <h2>2. Prestataire</h2>
+          <p>[Raison sociale] — contact : <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>.</p>
+          <h2>3. Service</h2>
+          <p>
+            Accès à l’application Delsia avec quota de <strong>60 comptes rendus par mois</strong> et durée
+            maximale de <strong>6 minutes</strong> par enregistrement vocal, selon les fonctionnalités
+            disponibles (compte rendu, version propriétaire pour les agents, export PDF).
+          </p>
+          <h2>4. Prix</h2>
+          <p>
+            <strong>12&nbsp;€ TTC</strong> par mois, prélèvement récurrent. Le prix est indiqué avant paiement sur
+            la page d’abonnement et confirmé sur Stripe Checkout.
+          </p>
+          <h2>5. Paiement</h2>
+          <p>
+            Paiement sécurisé via Stripe. Aucun numéro de carte n’est stocké sur nos serveurs. L’abonnement se
+            renouvelle automatiquement chaque mois jusqu’à résiliation.
+          </p>
+          <h2>6. Résiliation</h2>
+          <p>
+            Sans engagement de durée. Tu peux résilier à tout moment depuis
+            <a href="compte.html">Mon compte</a> → portail Stripe. L’accès reste actif jusqu’à la fin de la
+            période déjà payée.
+          </p>
+          <h2>7. Droit de rétractation</h2>
+          <p>
+            Pour les consommateurs, le droit de rétractation de 14 jours peut s’appliquer selon la loi ; en cas
+            d’accès immédiat au service numérique, tu peux être amené à renoncer expressément à ce droit lors du
+            paiement (selon le parcours Stripe / mentions affichées).
+          </p>
+          <h2>8. Responsabilité</h2>
+          <p>
+            Le service est fourni « en l’état ». Les comptes rendus générés doivent être relus avant envoi à un
+            tiers. Delsia ne se substitue pas à ton devoir professionnel.
+          </p>
+          <h2>9. Contact</h2>
+          <p><a href="mailto:contact@delsia.fr">contact@delsia.fr</a></p>
+          <p class="plan__note">Trame à faire valider / compléter (rétractation, TVA, médiation).</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/logo-icon.png" alt="" />
+          <span class="brand__word">Dels<span>ia</span></span>
+        </a>
+        <div class="footer__links">
+          <a href="pricing.html">Télécharger</a>
+          <a href="abonnement.html">Abonnement</a>
+          <a href="mentions.html">Mentions</a>
+          <a href="confidentialite.html">Confidentialité</a>
+          <a href="cgv.html">CGV</a>
+          <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>
+        </div>
+        <span>© <span id="year"></span> Delsia</span>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
