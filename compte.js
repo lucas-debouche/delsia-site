@@ -14,9 +14,6 @@
 
   const authBox = document.getElementById("authBox");
   const accountBox = document.getElementById("accountBox");
-  const emailInput = document.getElementById("emailInput");
-  const magicBtn = document.getElementById("magicBtn");
-  const magicMsg = document.getElementById("magicMsg");
   const planLabel = document.getElementById("planLabel");
   const userLabel = document.getElementById("userLabel");
   const statusLabel = document.getElementById("statusLabel");
@@ -47,34 +44,8 @@
   logoutBtn?.addEventListener("click", logout);
   logoutBtn2?.addEventListener("click", logout);
 
-  magicBtn?.addEventListener("click", async () => {
-    const email = (emailInput?.value || "").trim();
-    if (!email) {
-      magicMsg.hidden = false;
-      magicMsg.textContent = "Indique ton e-mail.";
-      return;
-    }
-    magicBtn.disabled = true;
-    const redirectTo = `${window.location.origin}/auth-callback.html?next=compte`;
-    const { error } = await client.auth.signInWithOtp({
-      email,
-      options: {
-        emailRedirectTo: redirectTo,
-        shouldCreateUser: false,
-      },
-    });
-    magicBtn.disabled = false;
-    magicMsg.hidden = false;
-    if (error) {
-      magicMsg.textContent =
-        error.message.includes("Signups not allowed") ||
-        error.message.includes("User not found")
-          ? "Aucun compte avec cet e-mail. Crée d’abord ton compte dans l’app Delsia."
-          : error.message;
-      return;
-    }
-    magicMsg.textContent =
-      "Lien envoyé. Sur mobile : ouvre le mail, appuie longuement sur le lien → « Ouvrir dans Safari/Chrome » (pas dans l’app Delsia).";
+  window.delsiaBindPasswordAuth(client, {
+    onSignedIn: () => refreshUi(),
   });
 
   portalBtn?.addEventListener("click", async () => {
@@ -124,7 +95,6 @@
       return;
     }
 
-    window.delsiaCleanAuthHash();
     authBox.hidden = true;
     accountBox.hidden = false;
     userLabel.textContent = session.user.email || "";
@@ -138,9 +108,9 @@
       .maybeSingle();
 
     if (error || !profile) {
-      planLabel.textContent = "Profil introuvable";
+      planLabel.textContent = "Profil en cours de création…";
       statusLabel.textContent =
-        "Ton compte app n’est pas encore lié. Ouvre l’app une fois, puis reviens ici.";
+        "Recharge la page dans quelques secondes. Si ça continue, ouvre l’app une fois.";
       actionsAgent.hidden = true;
       actionsFree.hidden = false;
       return;
@@ -172,13 +142,9 @@
     actionsFree.hidden = canManage;
   }
 
-  client.auth.onAuthStateChange((event) => {
-    if (event === "SIGNED_IN") {
-      window.delsiaCleanAuthHash();
-    }
+  client.auth.onAuthStateChange(() => {
     refreshUi();
   });
 
-  // Attendre que le hash #access_token=… soit traité
-  client.auth.getSession().then(() => refreshUi());
+  refreshUi();
 })();

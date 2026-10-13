@@ -26,9 +26,6 @@
 
   const authBox = document.getElementById("authBox");
   const payBox = document.getElementById("payBox");
-  const emailInput = document.getElementById("emailInput");
-  const magicBtn = document.getElementById("magicBtn");
-  const magicMsg = document.getElementById("magicMsg");
   const checkoutBtn = document.getElementById("checkoutBtn");
   const portalBtn = document.getElementById("portalBtn");
   const payMsg = document.getElementById("payMsg");
@@ -36,6 +33,10 @@
   const planHint = document.getElementById("planHint");
   const checkoutActions = document.getElementById("checkoutActions");
   const manageActions = document.getElementById("manageActions");
+
+  window.delsiaBindPasswordAuth(client, {
+    onSignedIn: () => refreshUi(),
+  });
 
   async function openPortal(session) {
     const res = await fetch(`${FUNCTIONS_BASE}/create-portal`, {
@@ -65,7 +66,6 @@
       return;
     }
 
-    window.delsiaCleanAuthHash();
     authBox.hidden = true;
     payBox.hidden = false;
     userLabel.textContent = `Connecté : ${session.user.email}`;
@@ -93,36 +93,6 @@
       manageActions.hidden = true;
     }
   }
-
-  magicBtn?.addEventListener("click", async () => {
-    const email = (emailInput?.value || "").trim();
-    if (!email) {
-      magicMsg.hidden = false;
-      magicMsg.textContent = "Indique ton e-mail.";
-      return;
-    }
-    magicBtn.disabled = true;
-    const redirectTo = `${window.location.origin}/auth-callback.html?next=abonnement`;
-    const { error } = await client.auth.signInWithOtp({
-      email,
-      options: {
-        emailRedirectTo: redirectTo,
-        shouldCreateUser: false,
-      },
-    });
-    magicBtn.disabled = false;
-    magicMsg.hidden = false;
-    if (error) {
-      magicMsg.textContent =
-        error.message.includes("Signups not allowed") ||
-        error.message.includes("User not found")
-          ? "Aucun compte avec cet e-mail. Crée d’abord ton compte dans l’app Delsia."
-          : error.message;
-      return;
-    }
-    magicMsg.textContent =
-      "Lien envoyé. Sur mobile : ouvre le mail, appuie longuement sur le lien → « Ouvrir dans Safari/Chrome » (pas dans l’app Delsia).";
-  });
 
   checkoutBtn?.addEventListener("click", async () => {
     payMsg.hidden = true;
@@ -182,12 +152,9 @@
     }
   });
 
-  client.auth.onAuthStateChange((event) => {
-    if (event === "SIGNED_IN") {
-      window.delsiaCleanAuthHash();
-    }
+  client.auth.onAuthStateChange(() => {
     refreshUi();
   });
 
-  client.auth.getSession().then(() => refreshUi());
+  refreshUi();
 })();

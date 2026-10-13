@@ -17,6 +17,32 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+      .auth-modes {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+      .auth-modes button {
+        flex: 1;
+        max-width: 180px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid #d0d5dd;
+        background: #fff;
+        font: inherit;
+        cursor: pointer;
+      }
+      .auth-modes button.is-active {
+        border-color: #050a30;
+        background: #050a30;
+        color: #fff;
+      }
+      .auth-field label {
+        display: block;
+        margin-bottom: 6px;
+      }
+    </style>
   </head>
   <body>
     <header class="nav is-solid" id="nav">
@@ -41,8 +67,8 @@
           <span class="section__eyebrow">Compte</span>
           <h1>Ton abonnement Delsia</h1>
           <p>
-            Connecte-toi avec le même e-mail que dans l’app pour voir ton plan, changer de carte ou
-            résilier.
+            Connecte-toi avec ton e-mail et mot de passe (les mêmes que dans l’app) pour voir ton plan,
+            changer de carte ou résilier.
           </p>
         </div>
       </section>
@@ -50,35 +76,78 @@
       <section class="wrap plans plans--single" id="compte">
         <article class="plan plan--featured">
           <div id="authBox">
-            <h2 class="plan__name">Connexion</h2>
-            <p class="plan__desc">
-              On t’envoie un lien magique — pas de mot de passe à retenir. Ouvre-le
-              <strong>dans le navigateur</strong> (Safari/Chrome), pas dans l’app Delsia.
+            <div class="auth-modes" role="tablist">
+              <button type="button" id="modeLogin" class="is-active">Connexion</button>
+              <button type="button" id="modeSignup">Créer un compte</button>
+            </div>
+            <h2 class="plan__name" id="authTitle">Connexion</h2>
+            <p class="plan__desc" id="authHint">
+              Même e-mail et mot de passe que dans l’app Delsia.
             </p>
-            <label class="plan__desc" for="emailInput" style="display: block; margin-bottom: 8px"
-              >E-mail</label
-            >
-            <input
-              id="emailInput"
-              type="email"
-              autocomplete="email"
-              placeholder="toi@agence.fr"
-              style="
-                width: 100%;
-                max-width: 360px;
-                padding: 12px 14px;
-                border-radius: 10px;
-                border: 1px solid #d0d5dd;
-                margin-bottom: 12px;
-                font: inherit;
-              "
-            />
+
+            <div class="auth-field">
+              <label class="plan__desc" for="emailInput">E-mail</label>
+              <input
+                id="emailInput"
+                type="email"
+                autocomplete="email"
+                placeholder="toi@agence.fr"
+                style="
+                  width: 100%;
+                  max-width: 360px;
+                  padding: 12px 14px;
+                  border-radius: 10px;
+                  border: 1px solid #d0d5dd;
+                  margin-bottom: 12px;
+                  font: inherit;
+                  display: block;
+                "
+              />
+            </div>
+            <div class="auth-field">
+              <label class="plan__desc" for="passwordInput">Mot de passe</label>
+              <input
+                id="passwordInput"
+                type="password"
+                autocomplete="current-password"
+                placeholder="••••••••"
+                style="
+                  width: 100%;
+                  max-width: 360px;
+                  padding: 12px 14px;
+                  border-radius: 10px;
+                  border: 1px solid #d0d5dd;
+                  margin-bottom: 12px;
+                  font: inherit;
+                  display: block;
+                "
+              />
+            </div>
+
             <div class="plan__ctas">
-              <button class="btn btn--primary" type="button" id="magicBtn">
-                Recevoir le lien de connexion
+              <button class="btn btn--primary" type="button" id="loginBtn">Se connecter</button>
+              <button class="btn btn--primary" type="button" id="signupBtn" hidden>
+                Créer mon compte
               </button>
             </div>
-            <p class="plan__note" id="magicMsg" hidden></p>
+            <p class="plan__note">
+              <button
+                type="button"
+                id="forgotBtn"
+                style="
+                  background: none;
+                  border: none;
+                  padding: 0;
+                  color: inherit;
+                  text-decoration: underline;
+                  cursor: pointer;
+                  font: inherit;
+                "
+              >
+                Mot de passe oublié ?
+              </button>
+            </p>
+            <p class="plan__note" id="authMsg" hidden></p>
           </div>
 
           <div id="accountBox" hidden>
