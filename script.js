@@ -1,4 +1,22 @@
 (() => {
+  // Magic link / Site URL → souvent https://delsia.fr#access_token=…
+  // Sans ça, l’accueil ignore les tokens et la session est perdue.
+  const hash = window.location.hash || "";
+  if (/(access_token|refresh_token|type=magiclink|type=signup|type=recovery)/.test(hash)) {
+    const path = (window.location.pathname || "").toLowerCase();
+    const alreadyOnAuth =
+      path.includes("compte.html") ||
+      path.includes("abonnement.html") ||
+      path.includes("auth-callback.html");
+    if (!alreadyOnAuth) {
+      const next = new URLSearchParams(window.location.search).get("next");
+      const target =
+        next === "abonnement" ? "abonnement.html" : "compte.html";
+      window.location.replace(target + hash);
+      return;
+    }
+  }
+
   const year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 

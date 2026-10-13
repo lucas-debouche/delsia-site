@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Connexion — Delsia</title>
+    <link rel="icon" href="favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <body>
+    <main class="page-hero">
+      <div class="wrap">
+        <p id="status">Connexion en cours…</p>
+      </div>
+    </main>
+    <script src="auth-config.js"></script>
+    <script>
+      (() => {
+        const status = document.getElementById("status");
+        const params = new URLSearchParams(window.location.search);
+        const nextRaw = params.get("next") || "compte";
+        const nextPage =
+          nextRaw === "abonnement" ? "abonnement.html" : "compte.html";
+
+        const go = (page) => {
+          window.location.replace(page);
+        };
+
+        let client;
+        try {
+          client = window.delsiaCreateSupabase();
+        } catch (e) {
+          status.textContent = "Erreur de configuration.";
+          return;
+        }
+
+        const finish = async () => {
+          const {
+            data: { session },
+            error,
+          } = await client.auth.getSession();
+
+          if (error) {
+            status.textContent = error.message;
+            return;
+          }
+
+          if (session) {
+            window.delsiaCleanAuthHash();
+            go(nextPage);
+            return;
+          }
+
+          // Parfois le hash n’est pas encore traité
+          const hash = window.location.hash || "";
+          if (/access_token|refresh_token/.test(hash)) {
+            status.textContent = "Finalisation…";
+            setTimeout(finish, 200);
+            return;
+          }
+
+          status.innerHTML =
+            'Lien invalide ou expiré. <a href="' +
+            nextPage +
+            '">Réessaie depuis Mon compte</a>.';
+        };
+
+        client.auth.onAuthStateChange((event) => {
+          if (event === "SIGNED_IN") {
+            window.delsiaCleanAuthHash();
+            go(nextPage);
+          }
+        });
+
+        finish();
+      })();
+    </script>
+  </body>
+</html>

@@ -55,7 +55,7 @@
       return;
     }
     magicBtn.disabled = true;
-    const redirectTo = `${window.location.origin}/compte.html`;
+    const redirectTo = `${window.location.origin}/auth-callback.html?next=compte`;
     const { error } = await client.auth.signInWithOtp({
       email,
       options: {

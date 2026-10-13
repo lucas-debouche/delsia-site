@@ -102,7 +102,7 @@
       return;
     }
     magicBtn.disabled = true;
-    const redirectTo = `${window.location.origin}/abonnement.html`;
+    const redirectTo = `${window.location.origin}/auth-callback.html?next=abonnement`;
     const { error } = await client.auth.signInWithOtp({
       email,
       options: {
