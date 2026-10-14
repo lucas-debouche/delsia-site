@@ -140,6 +140,8 @@
 
     actionsAgent.hidden = !canManage;
     actionsFree.hidden = canManage;
+    const portalHint = document.getElementById("portalHint");
+    if (portalHint) portalHint.hidden = !canManage;
   }
 
   client.auth.onAuthStateChange(() => {

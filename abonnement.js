@@ -33,6 +33,15 @@
   const planHint = document.getElementById("planHint");
   const checkoutActions = document.getElementById("checkoutActions");
   const manageActions = document.getElementById("manageActions");
+  const logoutPayBtn = document.getElementById("logoutPayBtn");
+  const logoutManageBtn = document.getElementById("logoutManageBtn");
+
+  async function logout() {
+    await client.auth.signOut();
+    await refreshUi();
+  }
+  logoutPayBtn?.addEventListener("click", logout);
+  logoutManageBtn?.addEventListener("click", logout);
 
   window.delsiaBindPasswordAuth(client, {
     onSignedIn: () => refreshUi(),
@@ -84,7 +93,7 @@
     if (hasStripeCustomer && (isAgentActive || profile?.plan === "agent")) {
       planHint.hidden = false;
       planHint.textContent =
-        "Tu as déjà un abonnement lié. Gère-le ici ou depuis Mon compte.";
+        "Abonnement actif — carte, factures et résiliation via le bouton ci-dessous.";
       checkoutActions.hidden = true;
       manageActions.hidden = false;
     } else {
