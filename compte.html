@@ -87,14 +87,16 @@
             <p class="plan__desc" id="statusLabel"></p>
             <p class="plan__desc" id="periodLabel" hidden></p>
 
-            <div class="plan__ctas" id="actionsAgent" hidden>
-              <button class="btn btn--primary" type="button" id="portalBtn">Gérer mon abonnement</button>
-              <button class="btn btn--ghost-on-navy" type="button" id="logoutBtn">Se déconnecter</button>
-            </div>
-
-            <div class="plan__ctas" id="actionsFree" hidden>
-              <a class="btn btn--primary" href="abonnement.html">S’abonner — 12&nbsp;€&nbsp;TTC / mois</a>
-              <button class="btn btn--ghost-on-navy" type="button" id="logoutBtn2">Se déconnecter</button>
+            <div class="plan__ctas" id="accountActions">
+              <a class="btn btn--primary" id="subscribeBtn" href="abonnement.html" hidden
+                >S’abonner — 12&nbsp;€&nbsp;TTC / mois</a
+              >
+              <button class="btn btn--primary" type="button" id="portalBtn">
+                Gérer mon abonnement
+              </button>
+              <button class="btn btn--ghost-on-navy" type="button" id="logoutBtn">
+                Se déconnecter
+              </button>
             </div>
 
             <p class="plan__note" id="accountMsg" hidden></p>

@@ -18,12 +18,11 @@
   const userLabel = document.getElementById("userLabel");
   const statusLabel = document.getElementById("statusLabel");
   const periodLabel = document.getElementById("periodLabel");
-  const actionsAgent = document.getElementById("actionsAgent");
-  const actionsFree = document.getElementById("actionsFree");
+  const subscribeBtn = document.getElementById("subscribeBtn");
   const portalBtn = document.getElementById("portalBtn");
   const accountMsg = document.getElementById("accountMsg");
+  const portalHint = document.getElementById("portalHint");
   const logoutBtn = document.getElementById("logoutBtn");
-  const logoutBtn2 = document.getElementById("logoutBtn2");
 
   const PLAN_LABELS = {
     beta: "Beta (accès test)",
@@ -42,7 +41,6 @@
   }
 
   logoutBtn?.addEventListener("click", logout);
-  logoutBtn2?.addEventListener("click", logout);
 
   window.delsiaBindPasswordAuth(client, {
     onSignedIn: () => refreshUi(),
@@ -74,7 +72,10 @@
       });
       const data = await res.json();
       if (!res.ok || !data.url) {
-        throw new Error(data.error || "Impossible d’ouvrir le portail");
+        throw new Error(
+          data.error ||
+            "Aucun abonnement Stripe lié. Utilise « S’abonner » pour en créer un.",
+        );
       }
       window.location.href = data.url;
     } catch (err) {
@@ -111,8 +112,7 @@
       planLabel.textContent = "Profil en cours de création…";
       statusLabel.textContent =
         "Recharge la page dans quelques secondes. Si ça continue, ouvre l’app une fois.";
-      actionsAgent.hidden = true;
-      actionsFree.hidden = false;
+      if (subscribeBtn) subscribeBtn.hidden = false;
       return;
     }
 
@@ -131,18 +131,19 @@
       periodLabel.hidden = true;
     }
 
-    // Un seul bloc visible : Gérer (Agent Stripe) OU S’abonner (sinon)
-    const canManage =
+    const isPaidAgent =
       profile.plan === "agent" &&
-      !!profile.stripe_customer_id &&
-      ["active", "trialing", "past_due", "canceled"].includes(
-        profile.subscription_status,
-      );
+      ["active", "trialing", "past_due"].includes(profile.subscription_status);
 
-    actionsAgent.hidden = !canManage;
-    actionsFree.hidden = canManage;
-    const portalHint = document.getElementById("portalHint");
-    if (portalHint) portalHint.hidden = !canManage;
+    // Gérer toujours visible ; S’abonner seulement si pas déjà Agent payant
+    if (subscribeBtn) subscribeBtn.hidden = isPaidAgent;
+    if (portalBtn) {
+      portalBtn.hidden = false;
+      portalBtn.className = isPaidAgent
+        ? "btn btn--primary"
+        : "btn btn--ghost-on-navy";
+    }
+    if (portalHint) portalHint.hidden = false;
   }
 
   client.auth.onAuthStateChange(() => {
