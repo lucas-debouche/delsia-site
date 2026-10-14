@@ -131,12 +131,13 @@
       periodLabel.hidden = true;
     }
 
+    // Un seul bloc visible : Gérer (Agent Stripe) OU S’abonner (sinon)
     const canManage =
+      profile.plan === "agent" &&
       !!profile.stripe_customer_id &&
-      (profile.plan === "agent" ||
-        ["active", "trialing", "past_due", "canceled"].includes(
-          profile.subscription_status,
-        ));
+      ["active", "trialing", "past_due", "canceled"].includes(
+        profile.subscription_status,
+      );
 
     actionsAgent.hidden = !canManage;
     actionsFree.hidden = canManage;

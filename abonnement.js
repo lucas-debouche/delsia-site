@@ -85,15 +85,18 @@
       .eq("id", session.user.id)
       .maybeSingle();
 
-    const hasStripeCustomer = !!profile?.stripe_customer_id;
-    const isAgentActive =
+    // Un seul bloc : Gérer (Agent) OU Payer (sinon) — jamais les deux
+    const canManage =
       profile?.plan === "agent" &&
-      ["active", "trialing", "past_due"].includes(profile?.subscription_status);
+      !!profile?.stripe_customer_id &&
+      ["active", "trialing", "past_due", "canceled"].includes(
+        profile?.subscription_status,
+      );
 
-    if (hasStripeCustomer && (isAgentActive || profile?.plan === "agent")) {
+    if (canManage) {
       planHint.hidden = false;
       planHint.textContent =
-        "Abonnement actif — carte, factures et résiliation via le bouton ci-dessous.";
+        "Abonnement lié — carte, factures et résiliation via le bouton ci-dessous.";
       checkoutActions.hidden = true;
       manageActions.hidden = false;
     } else {
