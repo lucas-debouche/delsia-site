@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Delsia — Du vocal au compte rendu, pour agents et commerciaux</title>
+    <title>Delsia — Du vocal au compte rendu, pour agents immobiliers</title>
     <meta
       name="description"
-      content="Delsia transforme vos notes vocales de visite ou de rendez-vous en comptes rendus clairs, prêts à partager."
+      content="Delsia transforme vos notes vocales de visite en comptes rendus clairs, prêts à partager — y compris une version pour le propriétaire."
     />
     <link rel="icon" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,43 +26,43 @@
         </a>
         <button class="nav__toggle" id="navToggle" type="button" aria-label="Menu">☰</button>
         <nav class="nav__links" id="navLinks">
+          <a href="#fonctionnement">Fonctionnement</a>
           <a href="pricing.html">Télécharger</a>
           <a href="abonnement.html">Abonnement</a>
           <a href="compte.html">Mon compte</a>
-          <a href="#fonctionnement">Comment ça marche</a>
           <a class="btn btn--primary" href="pricing.html">Télécharger la beta</a>
         </nav>
       </div>
     </header>
 
     <main>
+      <!-- 1. Hero — marque dominante -->
       <section class="hero">
-        <div class="hero__grid" aria-hidden="true"></div>
+        <div class="hero__glow" aria-hidden="true"></div>
         <div class="wrap hero__inner">
-          <div>
+          <div class="hero__copy">
             <div class="hero__brand">
-              <img src="assets/logo-icon.png" alt="Logo Delsia" width="56" height="56" />
+              <img src="assets/logo-icon.png" alt="" width="64" height="64" />
               <div class="hero__brand-name">Dels<span>ia</span></div>
             </div>
-            <h1>Tes rendez-vous en vocal. Tes comptes rendus, prêts.</h1>
+            <h1>Vos rendez-vous en vocal. Vos comptes rendus, prêts.</h1>
             <p class="hero__lead">
-              Tu dictes après une visite ou un client. Delsia rédige un compte rendu clair, pro, partageable —
-              adapté à ton métier. Pour les agents : une version propriétaire, sans le jargon interne.
+              Après une visite, vous dictez. Delsia rédige un compte rendu clair — et une version pour le
+              propriétaire, sans le jargon interne.
             </p>
             <div class="hero__ctas">
               <a class="btn btn--primary" href="pricing.html">Télécharger la beta</a>
-              <a class="link-soft" href="abonnement.html">Voir le tarif Agent — 12&nbsp;€ / mois</a>
+              <a class="link-soft" href="#fonctionnement">Voir comment ça marche</a>
             </div>
-            <p class="hero__proof">Beta privée — construite avec des agents et commerciaux sur le terrain.</p>
+            <p class="hero__proof">Beta privée — construite avec des agents sur le terrain.</p>
           </div>
 
           <div class="hero__visual" aria-label="Aperçu d’un compte rendu Delsia">
-            <span class="badge-live"><i></i> Généré à l’instant</span>
             <div class="device">
               <div class="device__screen">
                 <div class="cr-tabs" role="tablist">
                   <button type="button" class="is-active" data-tab="agent" role="tab" aria-selected="true">
-                    Pour toi
+                    Pour vous
                   </button>
                   <button type="button" data-tab="owner" role="tab" aria-selected="false">
                     Pour le propriétaire
@@ -76,20 +76,20 @@
                   <h3>Compte rendu</h3>
                   <p>
                     Bien lumineux, cuisine équipée, petite humidité salle de bain. Acquéreur motivé, offre possible
-                    sous 48 h.
+                    sous 48&nbsp;h.
                   </p>
                   <ul>
                     <li>Relancer le notaire sur le diag amiante</li>
                     <li>Envoyer photos façade + séjour</li>
-                    <li>Proposer 2e visite samedi matin</li>
+                    <li>Proposer 2<sup>e</sup> visite samedi matin</li>
                   </ul>
                 </div>
                 <div class="cr-panel cr-panel--owner" data-panel="owner" role="tabpanel" hidden>
                   <div class="cr-panel__meta">
-                    <span>Agents immobiliers</span>
-                    <span>Ton clair · prêt à envoyer</span>
+                    <span>Version propriétaire</span>
+                    <span>Prête à envoyer</span>
                   </div>
-                  <h3>Version propriétaire</h3>
+                  <h3>Compte rendu</h3>
                   <p>
                     La visite s’est bien déroulée. L’acquéreur a apprécié la luminosité et l’agencement. Un point
                     d’attention sur la salle de bain sera précisé.
@@ -106,72 +106,227 @@
         </div>
       </section>
 
-      <section class="section section--white" id="fonctionnement">
+      <!-- 2. Comment ça marche -->
+      <section class="section" id="fonctionnement">
         <div class="wrap">
-          <span class="section__eyebrow">Parcours</span>
-          <h2 class="section__title">Trois gestes. Zéro paperasse.</h2>
-          <p class="section__lead">
-            Conçu pour le terrain : tu parles, Delsia structure. Pas de formulaire interminable après le rendez-vous.
-          </p>
-          <div class="steps">
+          <header class="section__head reveal">
+            <span class="section__eyebrow">Fonctionnement</span>
+            <h2 class="section__title">Trois gestes. Pas de paperasse.</h2>
+            <p class="section__lead">
+              Vous parlez après le rendez-vous. L’IA structure le compte rendu. Vous relisez, vous partagez, vous
+              passez à la suite.
+            </p>
+          </header>
+          <div class="steps reveal">
             <article class="step">
               <span class="step__num">01</span>
-              <h3>Tu enregistres</h3>
-              <p>Sur place, tu dictes ce qui compte : points clés, ressenti, prochaines actions.</p>
+              <h3>Vous enregistrez</h3>
+              <p>Sur place ou en voiture : points clés, ressenti, prochaines actions.</p>
             </article>
             <article class="step">
               <span class="step__num">02</span>
               <h3>Delsia rédige</h3>
-              <p>Transcription + synthèse : un compte rendu structuré, prêt à relire ou à envoyer.</p>
+              <p>Un compte rendu structuré, prêt à relire ou à envoyer.</p>
             </article>
             <article class="step">
               <span class="step__num">03</span>
-              <h3>Tu partages</h3>
-              <p>PDF ou message : archive au dossier, envoie si besoin, passe au rendez-vous suivant.</p>
+              <h3>Vous partagez</h3>
+              <p>PDF ou message : au dossier, au propriétaire si besoin, puis rendez-vous suivant.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section" id="metiers">
+      <!-- 3. Métiers -->
+      <section class="section section--lift" id="metiers">
         <div class="wrap">
-          <span class="section__eyebrow">Pour qui</span>
-          <h2 class="section__title">Un outil, deux métiers terrain.</h2>
-          <p class="section__lead">
-            Même logique pour tout le monde. Des options en plus quand tu es agent immobilier.
-          </p>
-          <div class="split">
-            <article class="panel panel--agent">
+          <header class="section__head reveal">
+            <span class="section__eyebrow">Pour qui</span>
+            <h2 class="section__title">Pensé pour les agents. Utile aussi aux commerciaux.</h2>
+            <p class="section__lead">
+              Priorité agents immobiliers. Même logique pour les rendez-vous terrain — sans version propriétaire.
+            </p>
+          </header>
+          <div class="split reveal">
+            <article class="panel panel--primary">
               <span class="panel__tag">Agents immobiliers</span>
               <h3>Visites, suivi, version propriétaire</h3>
               <p>
-                Ton compte rendu de visite détaillé, plus une version soignée à envoyer au propriétaire — sans le
-                jargon interne.
+                Votre compte rendu détaillé, plus une version soignée à envoyer au propriétaire — sans le jargon
+                interne.
               </p>
             </article>
-            <article class="panel panel--owner">
+            <article class="panel panel--secondary">
               <span class="panel__tag">Commerciaux</span>
               <h3>Rendez-vous clients, actions, suite</h3>
               <p>
                 Un compte rendu clair après chaque échange : ce qui a été dit, ce qu’il faut relancer, la prochaine
-                étape. Pas de version propriétaire.
+                étape.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section section--navy">
-        <div class="wrap cta-band">
+      <!-- 4. CR propriétaire -->
+      <section class="section" id="proprietaire">
+        <div class="wrap feature reveal">
+          <div class="feature__copy">
+            <span class="section__eyebrow">Agents</span>
+            <h2 class="section__title">Une version pour le propriétaire.</h2>
+            <p class="section__lead">
+              Même visite, deux tons. Vous gardez le détail utile en interne. Le propriétaire reçoit un message clair,
+              professionnel, prêt à partir.
+            </p>
+            <ul class="feature__list">
+              <li>Sans jargon d’agence</li>
+              <li>Prêt à envoyer ou à exporter en PDF</li>
+              <li>Généré avec le même enregistrement</li>
+            </ul>
+          </div>
+          <div class="feature__visual" aria-hidden="true">
+            <div class="device device--compact">
+              <div class="device__screen">
+                <div class="cr-panel is-active cr-panel--owner">
+                  <div class="cr-panel__meta">
+                    <span>Pour le propriétaire</span>
+                    <span>Claire · pro</span>
+                  </div>
+                  <h3>Compte rendu</h3>
+                  <p>
+                    La visite s’est bien déroulée. L’acquéreur a apprécié la luminosité et l’agencement. Un point
+                    d’attention sur la salle de bain sera précisé.
+                  </p>
+                  <ul>
+                    <li>Intérêt confirmé sur le bien</li>
+                    <li>Suite possible dans les prochains jours</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Moment magique -->
+      <section class="section section--lift" id="resultat">
+        <div class="wrap">
+          <header class="section__head section__head--center reveal">
+            <span class="section__eyebrow">Le résultat</span>
+            <h2 class="section__title">Le compte rendu est là.</h2>
+            <p class="section__lead">
+              Pas de carnet à retaper le soir. Vous dictez — le document structuré est prêt.
+            </p>
+          </header>
+          <div class="magic reveal" id="magic">
+            <div class="magic__before">
+              <span class="magic__label">Vous dictez</span>
+              <p class="magic__quote">
+                « T3 rue des Lilas, bien lumineux, cuisine ok, un peu d’humidité sdb, acquéreur motivé, relancer
+                notaire… »
+              </p>
+            </div>
+            <div class="magic__arrow" aria-hidden="true"></div>
+            <div class="magic__after">
+              <span class="magic__label">Compte rendu prêt</span>
+              <div class="magic__card">
+                <strong>12 rue des Lilas · T3</strong>
+                <p>
+                  Bien lumineux, cuisine équipée, humidité salle de bain. Acquéreur motivé — offre possible sous
+                  48&nbsp;h.
+                </p>
+                <ul>
+                  <li>Relancer le notaire</li>
+                  <li>Envoyer photos façade</li>
+                  <li>Proposer 2<sup>e</sup> visite</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Télécharger -->
+      <section class="section" id="telecharger">
+        <div class="wrap download reveal">
           <div>
-            <h2>Prêt à sortir du carnet de notes ?</h2>
-            <p>
-              Beta gratuite pour tester. Abonnement Agent à 12&nbsp;€&nbsp;TTC / mois (60 comptes rendus, vocal 6&nbsp;min)
-              quand tu es prêt —
-              <a href="abonnement.html" style="text-decoration: underline; color: inherit">voir le tarif</a>.
+            <span class="section__eyebrow">Beta</span>
+            <h2 class="section__title">Téléchargez l’app.</h2>
+            <p class="section__lead">
+              Gratuit pendant la beta. iPhone via TestFlight, Android via le Play Store. Compte créé dans l’app après
+              l’installation.
             </p>
           </div>
-          <a class="btn btn--primary" href="pricing.html">Télécharger la beta</a>
+          <div class="download__ctas">
+            <a
+              class="btn btn--primary"
+              href="https://testflight.apple.com/join/ENGZ3n9s"
+              target="_blank"
+              rel="noopener noreferrer"
+              >iPhone — TestFlight</a
+            >
+            <a
+              class="btn btn--ghost"
+              href="https://play.google.com/store/apps/details?id=fr.delsia.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Android — Play Store</a
+            >
+            <a class="link-soft" href="pricing.html">Plus de détails</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Tarif -->
+      <section class="section section--lift" id="tarif">
+        <div class="wrap tarif reveal">
+          <div>
+            <span class="section__eyebrow">Abonnement</span>
+            <h2 class="section__title">Plan Agent — 12&nbsp;€&nbsp;TTC / mois</h2>
+            <p class="section__lead">
+              60 comptes rendus, vocal jusqu’à 6 minutes, version propriétaire et PDF. Sans engagement. Testez d’abord
+              la beta gratuitement.
+            </p>
+          </div>
+          <a class="btn btn--primary" href="abonnement.html">Voir l’abonnement</a>
+        </div>
+      </section>
+
+      <!-- 8. FAQ -->
+      <section class="section" id="faq">
+        <div class="wrap">
+          <header class="section__head reveal">
+            <span class="section__eyebrow">Questions</span>
+            <h2 class="section__title">En bref.</h2>
+          </header>
+          <div class="faq reveal">
+            <details class="faq__item">
+              <summary>Faut-il s’abonner pour tester&nbsp;?</summary>
+              <p>
+                Non. La beta est gratuite.
+                <a href="pricing.html">Téléchargez l’app</a>, puis abonnez-vous seulement quand vous êtes prêt.
+              </p>
+            </details>
+            <details class="faq__item">
+              <summary>C’est de l’IA&nbsp;?</summary>
+              <p>
+                Oui. Vous dictez ; l’IA rédige le compte rendu. Le résultat compte — pas le jargon technique.
+              </p>
+            </details>
+            <details class="faq__item">
+              <summary>Et la version propriétaire&nbsp;?</summary>
+              <p>
+                Réservée aux agents : un ton clair, sans détail interne, générée à partir du même vocal.
+              </p>
+            </details>
+            <details class="faq__item">
+              <summary>Où paie-t-on&nbsp;?</summary>
+              <p>
+                Sur delsia.fr, via Stripe — pas dans l’App Store.
+                <a href="abonnement.html">Page abonnement</a>.
+              </p>
+            </details>
+          </div>
         </div>
       </section>
     </main>

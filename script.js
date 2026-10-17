@@ -4,8 +4,9 @@
 
   const nav = document.getElementById("nav");
   const onScroll = () => {
-    if (!nav || !document.querySelector(".hero")) return;
-    nav.classList.toggle("is-solid", window.scrollY > 24);
+    if (!nav) return;
+    const hasHero = Boolean(document.querySelector(".hero"));
+    nav.classList.toggle("is-solid", !hasHero || window.scrollY > 24);
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
@@ -14,6 +15,9 @@
   const links = document.getElementById("navLinks");
   if (toggle && links) {
     toggle.addEventListener("click", () => links.classList.toggle("is-open"));
+    links.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => links.classList.remove("is-open"));
+    });
   }
 
   const tabButtons = document.querySelectorAll(".cr-tabs button");
@@ -33,4 +37,24 @@
       });
     });
   });
+
+  const revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && revealEls.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          if (entry.target.id === "magic" || entry.target.classList.contains("magic")) {
+            entry.target.classList.add("is-in");
+          }
+          io.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+  }
 })();
