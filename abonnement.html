@@ -6,17 +6,28 @@
     <title>Abonnement Agent 12 € — Delsia</title>
     <meta
       name="description"
-      content="Plan Agent Delsia : 12 € TTC / mois, 60 comptes rendus, vocal 6 min. Paiement Stripe sur delsia.fr."
+      content="Plan Agent Delsia : 12 € TTC / mois, 60 comptes rendus, vocal 6 min. Paiement sécurisé par Stripe sur delsia.fr."
     />
+    <link rel="canonical" href="https://delsia.fr/abonnement" />
     <link rel="icon" href="favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap"
-      rel="stylesheet"
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="theme-color" content="#050A30" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Delsia" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="Abonnement Agent 12 € — Delsia" />
+    <meta
+      property="og:description"
+      content="Plan Agent Delsia : 12 € TTC / mois, 60 comptes rendus, vocal 6 min. Paiement sécurisé par Stripe sur delsia.fr."
     />
+    <meta property="og:url" content="https://delsia.fr/abonnement" />
+    <meta property="og:image" content="https://delsia.fr/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="vendor/supabase.min.js"></script>
   </head>
   <body>
     <header class="nav is-solid" id="nav">
@@ -39,12 +50,11 @@
     <main>
       <section class="page-hero">
         <div class="wrap">
-          <span class="section__eyebrow">Abonnement</span>
-          <h1>Plan Agent — 12&nbsp;€&nbsp;TTC / mois</h1>
+          <h1>Plan Agent — 12&nbsp;€&nbsp;TTC&nbsp;/&nbsp;mois</h1>
           <p>
             60 comptes rendus par mois, vocal jusqu’à 6 minutes, version propriétaire et PDF. Paiement sécurisé
-            Stripe sur delsia.fr — pas dans l’App Store. Pour tester sans payer :
-            <a href="pricing.html">télécharge d’abord la beta</a>.
+            par Stripe sur delsia.fr — pas dans l’App Store. Pour tester sans payer :
+            <a href="pricing.html">téléchargez d’abord la beta</a>.
           </p>
         </div>
       </section>
@@ -64,7 +74,7 @@
           </ul>
 
           <p class="trust-line">
-            Paiement sécurisé Stripe · Données hébergées UE (Supabase) · Résiliable en quelques clics
+            Paiement sécurisé par Stripe · Données hébergées dans l’UE · Résiliable en quelques clics
           </p>
 
           <div id="authBox" class="auth-panel">
@@ -74,12 +84,12 @@
             </div>
             <h3 class="auth-panel__title" id="authTitle">Connexion</h3>
             <p class="plan__desc" id="authHint">
-              Même e-mail et mot de passe que dans l’app. Pas encore d’app ?
-              <a href="pricing.html">Télécharge la beta</a> — ou crée ton compte ici pour t’abonner, tu le
-              réutiliseras dans l’app.
+              Même e-mail et mot de passe que dans l’app. Pas encore l’app ?
+              <a href="pricing.html">Téléchargez la beta</a> — ou créez votre compte ici pour vous abonner : vous
+              le réutiliserez dans l’app.
             </p>
             <label class="auth-label" for="emailInput">E-mail</label>
-            <input id="emailInput" class="auth-input" type="email" autocomplete="email" placeholder="toi@agence.fr" />
+            <input id="emailInput" class="auth-input" type="email" autocomplete="email" placeholder="vous@agence.fr" />
             <label class="auth-label" for="passwordInput">Mot de passe</label>
             <input
               id="passwordInput"
@@ -118,7 +128,6 @@
 
       <section class="section section--white" id="faq">
         <div class="wrap">
-          <span class="section__eyebrow">FAQ</span>
           <h2 class="section__title">Questions fréquentes</h2>
           <div class="faq">
             <details class="faq__item">
@@ -136,15 +145,15 @@
             <details class="faq__item">
               <summary>C’est le même compte que l’app ?</summary>
               <p>
-                Oui : même e-mail et mot de passe. Tu peux créer le compte ici pour t’abonner, puis te connecter
-                dans l’app — ou l’inverse.
+                Oui : même e-mail et mot de passe. Vous pouvez créer le compte ici pour vous abonner, puis vous
+                connecter dans l’app — ou l’inverse.
               </p>
             </details>
             <details class="faq__item">
               <summary>Beta gratuite ou abonnement ?</summary>
               <p>
-                La beta te permet de tester l’app gratuitement
-                (<a href="pricing.html">en téléchargeant</a>. L’abonnement Agent active le quota de 60 comptes
+                La beta vous permet de tester l’app gratuitement
+                (<a href="pricing.html">en la téléchargeant</a>). L’abonnement Agent active le quota de 60 comptes
                 rendus / mois et le suivi de facturation.
               </p>
             </details>
@@ -183,5 +192,6 @@
     <script src="script.js"></script>
     <script src="auth-config.js"></script>
     <script src="abonnement.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
   </body>
 </html>

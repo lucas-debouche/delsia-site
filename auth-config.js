@@ -31,16 +31,16 @@ window.delsiaAuthMessage = function delsiaAuthMessage(err) {
     return "E-mail ou mot de passe incorrect.";
   }
   if (m.includes("email not confirmed")) {
-    return "Confirme d’abord ton e-mail (lien reçu à l’inscription), puis reconnecte-toi.";
+    return "Confirmez d’abord votre e-mail (lien reçu à l’inscription), puis reconnectez-vous.";
   }
   if (m.includes("already registered") || m.includes("already been registered")) {
-    return "Ce compte existe déjà. Connecte-toi avec ton mot de passe.";
+    return "Ce compte existe déjà. Connectez-vous avec votre mot de passe.";
   }
   if (m.includes("password") && m.includes("6")) {
     return "Mot de passe trop court (6 caractères minimum).";
   }
   if (m.includes("signup is disabled")) {
-    return "Inscription désactivée côté Supabase. Réactive Email signup dans Authentication.";
+    return "Les inscriptions sont fermées pour le moment. Écrivez-nous à contact@delsia.fr.";
   }
   return err.message || "Erreur de connexion.";
 };
@@ -74,7 +74,7 @@ window.delsiaBindPasswordAuth = function delsiaBindPasswordAuth(client, opts) {
     if (authHint) {
       authHint.textContent = isLogin
         ? "Même e-mail et mot de passe que dans l’app Delsia."
-        : "Tu pourras utiliser ce compte dans l’app ensuite.";
+        : "Vous pourrez utiliser ce compte dans l’app ensuite.";
     }
     if (loginBtn) loginBtn.hidden = !isLogin;
     if (signupBtn) signupBtn.hidden = isLogin;
@@ -91,7 +91,7 @@ window.delsiaBindPasswordAuth = function delsiaBindPasswordAuth(client, opts) {
     const email = (emailInput?.value || "").trim();
     const password = passwordInput?.value || "";
     if (!email || !password) {
-      setMsg("Indique e-mail et mot de passe.", true);
+      setMsg("Indiquez votre e-mail et votre mot de passe.", true);
       return;
     }
     loginBtn.disabled = true;
@@ -109,7 +109,7 @@ window.delsiaBindPasswordAuth = function delsiaBindPasswordAuth(client, opts) {
     const email = (emailInput?.value || "").trim();
     const password = passwordInput?.value || "";
     if (!email || !password) {
-      setMsg("Indique e-mail et mot de passe.", true);
+      setMsg("Indiquez votre e-mail et votre mot de passe.", true);
       return;
     }
     if (password.length < 6) {
@@ -132,7 +132,7 @@ window.delsiaBindPasswordAuth = function delsiaBindPasswordAuth(client, opts) {
     // Si confirmation e-mail exigée, pas de session tout de suite
     if (!data.session) {
       setMsg(
-        "Compte créé. Vérifie ta boîte mail pour confirmer, puis connecte-toi ici (et dans l’app).",
+        "Compte créé. Vérifiez votre boîte mail pour le confirmer, puis connectez-vous ici (et dans l’app).",
         false,
       );
       setMode("login");
@@ -145,7 +145,7 @@ window.delsiaBindPasswordAuth = function delsiaBindPasswordAuth(client, opts) {
   forgotBtn?.addEventListener("click", async () => {
     const email = (emailInput?.value || "").trim();
     if (!email) {
-      setMsg("Indique ton e-mail pour réinitialiser le mot de passe.", true);
+      setMsg("Indiquez votre e-mail pour réinitialiser le mot de passe.", true);
       return;
     }
     forgotBtn.disabled = true;
@@ -158,7 +158,7 @@ window.delsiaBindPasswordAuth = function delsiaBindPasswordAuth(client, opts) {
       return;
     }
     setMsg(
-      "E-mail de réinitialisation envoyé. Ouvre le lien dans Safari/Chrome (pas dans l’app).",
+      "E-mail de réinitialisation envoyé. Ouvrez le lien dans votre navigateur (Safari ou Chrome), pas dans l’app.",
       false,
     );
   });

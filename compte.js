@@ -54,7 +54,7 @@
     } = await client.auth.getSession();
     if (!session) {
       accountMsg.hidden = false;
-      accountMsg.textContent = "Session expirée. Reconnecte-toi.";
+      accountMsg.textContent = "Session expirée. Reconnectez-vous.";
       portalBtn.disabled = false;
       await refreshUi();
       return;
@@ -74,13 +74,13 @@
       if (!res.ok || !data.url) {
         throw new Error(
           data.error ||
-            "Aucun abonnement Stripe lié. Utilise « S’abonner » pour en créer un.",
+            "Aucun abonnement rattaché à ce compte. Utilisez « S’abonner » pour en souscrire un.",
         );
       }
       window.location.href = data.url;
     } catch (err) {
       accountMsg.hidden = false;
-      accountMsg.textContent = err.message || "Erreur Stripe";
+      accountMsg.textContent = err.message || "Une erreur est survenue. Réessayez dans un instant.";
       portalBtn.disabled = false;
     }
   });
@@ -111,16 +111,27 @@
     if (error || !profile) {
       planLabel.textContent = "Profil en cours de création…";
       statusLabel.textContent =
-        "Recharge la page dans quelques secondes. Si ça continue, ouvre l’app une fois.";
+        "Rechargez la page dans quelques secondes. Si le problème continue, ouvrez l’app une fois.";
       if (subscribeBtn) subscribeBtn.hidden = false;
       return;
     }
 
     planLabel.textContent = planTitle(profile.plan);
-    statusLabel.textContent = `Statut : ${profile.subscription_status || "none"} · Quota : ${
+    const statusText = {
+      active: "actif",
+      trialing: "période d’essai",
+      past_due: "paiement en retard",
+      unpaid: "impayé",
+      canceled: "résilié",
+      incomplete: "paiement à finaliser",
+      incomplete_expired: "paiement expiré",
+      paused: "en pause",
+    };
+    const status = profile.subscription_status;
+    statusLabel.textContent = `Statut : ${status ? statusText[status] || status : "aucun abonnement"} · Quota : ${
       profile.plan === "beta"
         ? "illimité (beta)"
-        : `${profile.quota_monthly} CR / mois`
+        : `${profile.quota_monthly} comptes rendus / mois`
     }`;
 
     if (profile.period_end) {

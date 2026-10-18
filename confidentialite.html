@@ -5,13 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Confidentialité — Delsia</title>
     <meta name="description" content="Politique de confidentialité Delsia — vocaux, comptes rendus, RGPD." />
+    <link rel="canonical" href="https://delsia.fr/confidentialite" />
     <link rel="icon" href="favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap"
-      rel="stylesheet"
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="theme-color" content="#050A30" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Delsia" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="Confidentialité — Delsia" />
+    <meta
+      property="og:description"
+      content="Politique de confidentialité Delsia — vocaux, comptes rendus, RGPD."
     />
+    <meta property="og:url" content="https://delsia.fr/confidentialite" />
+    <meta property="og:image" content="https://delsia.fr/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -34,9 +45,8 @@
     <main>
       <section class="page-hero">
         <div class="wrap">
-          <span class="section__eyebrow">Légal</span>
           <h1>Politique de confidentialité</h1>
-          <p>Date de dernière mise à jour : 15 octobre 2026</p>
+          <p>Date de dernière mise à jour : 18 octobre 2026</p>
         </div>
       </section>
       <section class="section section--white">
@@ -105,7 +115,8 @@
           </p>
           <p>
             Des sous-traitants techniques interviennent uniquement pour faire fonctionner le service&nbsp;:
-            Supabase (base de données, authentification, stockage), Vercel (hébergement du site), Stripe
+            Supabase (base de données, authentification, stockage), Vercel (hébergement du site et mesure
+            d’audience), Stripe
             (paiement), et des prestataires d’IA pour la transcription / rédaction des comptes rendus, dans le
             cadre du traitement nécessaire au service.
           </p>
@@ -117,7 +128,24 @@
             est configuré en UE). Le site est hébergé par Vercel. Les paiements sont traités par Stripe.
           </p>
 
-          <h2>5. Conservation et suppression des données</h2>
+          <h2>5. Mesure d’audience, cookies et polices</h2>
+          <p>
+            Le site delsia.fr utilise Vercel Web Analytics pour mesurer sa fréquentation (pages consultées,
+            site de provenance, type d’appareil). Cette mesure est anonyme&nbsp;: elle n’utilise ni cookies ni
+            identifiant persistant, et ne permet pas de vous suivre d’un site à l’autre. Ces données sont
+            hébergées par Vercel.
+          </p>
+          <p>
+            Le site ne dépose pas de cookies publicitaires ni de traceurs. Sur les pages Abonnement et Mon
+            compte, votre session de connexion est conservée dans votre navigateur pour que vous restiez
+            connecté&nbsp;; elle est effacée lorsque vous vous déconnectez.
+          </p>
+          <p>
+            Les polices de caractères sont hébergées sur le site lui-même. Aucune requête n’est envoyée à
+            Google Fonts lors de votre visite.
+          </p>
+
+          <h2>6. Conservation et suppression des données</h2>
           <p>
             Vos données sont conservées tant que votre compte Delsia est actif. Conformément au RGPD et aux
             exigences des stores (notamment Google Play), vous disposez d’un droit d’accès, de modification et
@@ -138,14 +166,14 @@
             <strong>30 jours</strong> après réception de la demande, sauf obligation légale de conservation.
           </p>
 
-          <h2>6. Vos droits (RGPD)</h2>
+          <h2>7. Vos droits (RGPD)</h2>
           <p>
             Accès, rectification, suppression, opposition, portabilité — contactez
             <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>. Vous pouvez aussi introduire une
             réclamation auprès de la CNIL.
           </p>
 
-          <h2>7. Contact</h2>
+          <h2>8. Contact</h2>
           <p>
             Pour toute question concernant la protection de vos données ou pour exercer vos droits&nbsp;:
             <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>.
@@ -172,5 +200,6 @@
       </div>
     </footer>
     <script src="script.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
   </body>
 </html>

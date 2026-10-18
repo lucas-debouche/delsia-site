@@ -9,11 +9,11 @@
   if (params.get("success") === "1" && flash) {
     flash.hidden = false;
     flash.textContent =
-      "Paiement reçu. Rouvre l’app Delsia : ton plan Agent sera actif sous une minute. Tu peux aussi ouvrir Mon compte.";
+      "Paiement reçu. Rouvrez l’app Delsia : votre plan Agent sera actif d’ici une minute. Vous pouvez aussi ouvrir Mon compte.";
   }
   if (params.get("canceled") === "1" && flash) {
     flash.hidden = false;
-    flash.textContent = "Paiement annulé. Tu peux réessayer quand tu veux.";
+    flash.textContent = "Paiement annulé. Vous pouvez réessayer quand vous voulez.";
   }
 
   let client;
@@ -59,7 +59,7 @@
     });
     const data = await res.json();
     if (!res.ok || !data.url) {
-      throw new Error(data.error || "Impossible d’ouvrir le portail");
+      throw new Error(data.error || "Impossible d’ouvrir la gestion de l’abonnement. Réessayez dans un instant.");
     }
     window.location.href = data.url;
   }
@@ -96,7 +96,7 @@
     if (canManage) {
       planHint.hidden = false;
       planHint.textContent =
-        "Abonnement lié — carte, factures et résiliation via le bouton ci-dessous.";
+        "Un abonnement Agent est rattaché à ce compte. Carte, factures et résiliation : bouton ci-dessous.";
       checkoutActions.hidden = true;
       manageActions.hidden = false;
     } else {
@@ -114,7 +114,7 @@
     } = await client.auth.getSession();
     if (!session) {
       payMsg.hidden = false;
-      payMsg.textContent = "Session expirée. Reconnecte-toi.";
+      payMsg.textContent = "Session expirée. Reconnectez-vous.";
       checkoutBtn.disabled = false;
       await refreshUi();
       return;
@@ -132,12 +132,12 @@
       });
       const data = await res.json();
       if (!res.ok || !data.url) {
-        throw new Error(data.error || "Impossible de créer la session Stripe");
+        throw new Error(data.error || "Impossible d’ouvrir la page de paiement. Réessayez dans un instant.");
       }
       window.location.href = data.url;
     } catch (err) {
       payMsg.hidden = false;
-      payMsg.textContent = err.message || "Erreur Stripe";
+      payMsg.textContent = err.message || "Le paiement n’a pas pu démarrer. Réessayez dans un instant.";
       checkoutBtn.disabled = false;
     }
   });
@@ -150,7 +150,7 @@
     } = await client.auth.getSession();
     if (!session) {
       payMsg.hidden = false;
-      payMsg.textContent = "Session expirée. Reconnecte-toi.";
+      payMsg.textContent = "Session expirée. Reconnectez-vous.";
       portalBtn.disabled = false;
       await refreshUi();
       return;
@@ -159,7 +159,7 @@
       await openPortal(session);
     } catch (err) {
       payMsg.hidden = false;
-      payMsg.textContent = err.message || "Erreur Stripe";
+      payMsg.textContent = err.message || "Une erreur est survenue. Réessayez dans un instant.";
       portalBtn.disabled = false;
     }
   });

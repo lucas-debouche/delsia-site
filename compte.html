@@ -6,17 +6,28 @@
     <title>Mon compte — Delsia</title>
     <meta
       name="description"
-      content="Gère ton abonnement Delsia : plan, carte bancaire, résiliation via Stripe."
+      content="Gérez votre abonnement Delsia : plan, carte bancaire, résiliation via Stripe."
     />
+    <link rel="canonical" href="https://delsia.fr/compte" />
     <link rel="icon" href="favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap"
-      rel="stylesheet"
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="theme-color" content="#050A30" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Delsia" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="Mon compte — Delsia" />
+    <meta
+      property="og:description"
+      content="Gérez votre abonnement Delsia : plan, carte bancaire, résiliation via Stripe."
     />
+    <meta property="og:url" content="https://delsia.fr/compte" />
+    <meta property="og:image" content="https://delsia.fr/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="vendor/supabase.min.js"></script>
   </head>
   <body>
     <header class="nav is-solid" id="nav">
@@ -38,19 +49,17 @@
     <main>
       <section class="page-hero">
         <div class="wrap">
-          <span class="section__eyebrow">Compte</span>
-          <h1>Gérer ton abonnement</h1>
+          <h1>Gérer votre abonnement</h1>
           <p>
-            Cet espace sert à voir ton plan, changer de carte ou résilier (portail Stripe). Pour tester l’app
-            sans payer :
-            <a href="pricing.html">télécharge d’abord la beta</a>
+            Cet espace sert à voir votre plan, changer de carte ou résilier. Pour tester l’app sans payer :
+            <a href="pricing.html">téléchargez d’abord la beta</a>
             — le compte se crée dans l’app.
           </p>
         </div>
       </section>
 
       <section class="wrap plans plans--single" id="compte">
-        <article class="plan plan--featured">
+        <article class="plan plan--featured plan--account">
           <div id="authBox" class="auth-panel">
             <div class="auth-modes" role="tablist">
               <button type="button" id="modeLogin" class="is-active">Connexion</button>
@@ -61,7 +70,7 @@
               Même e-mail et mot de passe que dans l’app Delsia.
             </p>
             <label class="auth-label" for="emailInput">E-mail</label>
-            <input id="emailInput" class="auth-input" type="email" autocomplete="email" placeholder="toi@agence.fr" />
+            <input id="emailInput" class="auth-input" type="email" autocomplete="email" placeholder="vous@agence.fr" />
             <label class="auth-label" for="passwordInput">Mot de passe</label>
             <input
               id="passwordInput"
@@ -130,5 +139,6 @@
     <script src="script.js"></script>
     <script src="auth-config.js"></script>
     <script src="compte.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
   </body>
 </html>
