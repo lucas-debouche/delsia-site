@@ -35,6 +35,42 @@
         }, 4000);
       }
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://delsia.fr/#organization",
+            "name": "Delsia",
+            "url": "https://delsia.fr/",
+            "logo": "https://delsia.fr/apple-touch-icon.png",
+            "email": "contact@delsia.fr",
+            "sameAs": ["https://play.google.com/store/apps/details?id=fr.delsia.app"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://delsia.fr/#website",
+            "name": "Delsia",
+            "url": "https://delsia.fr/",
+            "inLanguage": "fr-FR",
+            "publisher": { "@id": "https://delsia.fr/#organization" }
+          },
+          {
+            "@type": "MobileApplication",
+            "name": "Delsia",
+            "operatingSystem": "iOS, Android",
+            "applicationCategory": "BusinessApplication",
+            "description": "Application pour agents immobiliers : vous dictez la visite, Delsia rédige le compte rendu, les actions, la version propriétaire et les rendez-vous.",
+            "url": "https://delsia.fr/",
+            "downloadUrl": "https://delsia.fr/pricing",
+            "inLanguage": "fr-FR",
+            "publisher": { "@id": "https://delsia.fr/#organization" },
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "description": "Beta gratuite" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body class="home">
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -63,8 +99,6 @@
         <button class="nav__toggle" id="navToggle" type="button" aria-label="Menu">☰</button>
         <nav class="nav__links" id="navLinks">
           <a href="#exemple" data-to-example>Exemple</a>
-          <a href="abonnement.html">Tarif</a>
-          <a href="compte.html">Mon compte</a>
           <a class="btn btn--primary" href="#essayer">Télécharger</a>
         </nav>
       </div>
@@ -430,14 +464,6 @@
               <figcaption>Scannez avec votre téléphone pour installer la beta.</figcaption>
             </figure>
           </div>
-
-          <div class="try__plan" data-line>
-            <p>
-              <strong>Ensuite : plan Agent, 12&nbsp;€&nbsp;TTC / mois.</strong>
-              60 comptes rendus par mois, sans engagement.
-            </p>
-            <a class="link-arrow" href="abonnement.html">Voir l’abonnement</a>
-          </div>
         </div>
       </section>
 
@@ -447,8 +473,8 @@
           <h2 class="h2" data-split>Questions</h2>
           <div class="qa__list">
             <details data-line>
-              <summary>Faut-il s’abonner pour tester&nbsp;?</summary>
-              <p>Non. La beta est gratuite. Vous vous abonnez seulement si l’app vous fait gagner du temps.</p>
+              <summary>C’est payant&nbsp;?</summary>
+              <p>Non, la beta est gratuite et sans carte bancaire. Si une offre payante arrive plus tard, vous serez prévenu avant, et rien ne vous sera facturé sans votre accord.</p>
             </details>
             <details data-line>
               <summary>C’est de l’IA&nbsp;?</summary>
@@ -457,10 +483,6 @@
             <details data-line>
               <summary>Mes données sont-elles en sécurité&nbsp;?</summary>
               <p>Elles sont hébergées dans l’Union européenne. Le détail est dans la <a href="confidentialite.html">politique de confidentialité</a>.</p>
-            </details>
-            <details data-line>
-              <summary>Où paie-t-on&nbsp;?</summary>
-              <p>Sur delsia.fr, par carte via Stripe — pas dans l’App Store. <a href="abonnement.html">Voir l’abonnement</a>.</p>
             </details>
             <details data-line>
               <summary>Je suis commercial, pas agent&nbsp;: ça marche aussi&nbsp;?</summary>
@@ -479,11 +501,8 @@
         </a>
         <div class="footer__links">
           <a href="pricing.html">Télécharger</a>
-          <a href="abonnement.html">Abonnement</a>
-          <a href="compte.html">Mon compte</a>
           <a href="mentions.html">Mentions</a>
           <a href="confidentialite.html">Confidentialité</a>
-          <a href="cgv.html">CGV</a>
           <a href="mailto:contact@delsia.fr">contact@delsia.fr</a>
         </div>
         <span>© <span id="year"></span> Delsia</span>
